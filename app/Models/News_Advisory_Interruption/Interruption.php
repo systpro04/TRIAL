@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Interruption extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'what',
+        'dateTime',
+        'where',
+        'why'
+    ];
 }

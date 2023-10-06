@@ -35,7 +35,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-reponsive">
-                            <table class="table table-striped shadow table-hover text-center">
+                            <table class="table table-striped shadow table-hover text-center" id="newsTable">
                                 <thead class="bg-primary text-center">
                                     <tr>
                                         <th>Image</th>
@@ -74,8 +74,4 @@
         </div>
     </div>
 </div>
-
-<script>
-   $(document).ready(function()
-</script>
 @endsection

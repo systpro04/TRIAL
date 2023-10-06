@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+@include('news_adv_int.interruption.create')
 <div class="content">
     <div class="content-header">
         <div class="container-fluid">
@@ -26,13 +27,13 @@
                                 <h4 class="card-title">Interruptions Information List</h4>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-plus-circle"></i></a>
+                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#create"><i class="fas fa-plus-circle"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="table-reponsive">
-                            <table class="table table-striped shadow table-hover">
+                            <table class="table table-striped shadow table-hover text-center">
                                 <thead class="bg-primary text-center">
                                     <tr>
                                         <th>What</th>
@@ -42,6 +43,19 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    @foreach ($interruptions as $int)
+                                    <tr>
+                                        <td>{{ $int->what }}</td>
+                                        <td>{{ $int->where }}</td>
+                                        <td>{{ $int->why }}</td>
+                                        <td>{{ $int->dateTime }}</td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>

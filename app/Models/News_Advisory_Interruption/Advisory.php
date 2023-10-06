@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Advisory extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'place',
+        'info',
+        'dateTime'
+    ];
 }

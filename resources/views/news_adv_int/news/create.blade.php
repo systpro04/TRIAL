@@ -1,8 +1,8 @@
 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="historyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fa fa-spinner fa-spin"></i> Data Adjustment :</h4>
+                <h4 class="modal-title"><i class="fa fa-spinner fa-spin"></i>Create News :</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

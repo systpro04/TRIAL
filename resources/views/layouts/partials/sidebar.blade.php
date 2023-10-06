@@ -36,13 +36,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('advisories') }}" class="nav-link {{ request()->is('advisories*') ? 'active' : '' }}">
+                    <a href="{{ route('advisories.index') }}" class="nav-link {{ request()->is('advisories*') ? 'active' : '' }}">
                         <i class="fas fa-lightbulb nav-icon"></i>
                         <p>Advisories</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('interruptions') }}" class="nav-link {{ request()->is('interruptions*') ? 'active' : '' }}">
+                    <a href="{{ route('interruptions.index') }}" class="nav-link {{ request()->is('interruptions*') ? 'active' : '' }}">
                         <i class="fas fa-exclamation nav-icon"></i>
                         <p>Interruptions</p>
                     </a>

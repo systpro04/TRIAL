@@ -26,6 +26,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::resource('news','App\Http\Controllers\News_Advisory_Interruption\NewsController');
-Route::get('/advisories', [AdvisoryController::class, 'index'])->name('advisories');
-Route::get('/interruptions', [InterruptionController::class, 'index'])->name('interruptions');
+
+Route::resource('/news','App\Http\Controllers\News_Advisory_Interruption\NewsController');
+Route::resource('/advisories', 'App\Http\Controllers\News_Advisory_Interruption\AdvisoryController');
+Route::resource('/interruptions', 'App\Http\Controllers\News_Advisory_Interruption\InterruptionController');

@@ -1,5 +1,11 @@
+
+<div style="background: teal;border-bottom: 3px solid goldenrod;">
+    <div class="container">
+        <img src="{{ asset('images/users/flames.png') }}" style="height: 35px; width: 35px; border-radius: 50%;"> Trial and Error
+    </div>
+</div>
+
 <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
-    <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
