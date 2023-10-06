@@ -51,8 +51,19 @@
                                                 <td>{{ $adv->info }}</td>
                                                 <td>{{ $adv->dateTime }}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-danger"><i
-                                                            class="fas fa-trash"></i></a>
+                                                    <a href="{{ route('advisories.edit', $adv) }}"
+                                                        class="btn btn-sm btn-success mx-1"><i class="fas fa-edit"></i></a>
+                                                    <form id="delete-form-{{ $adv->id }}"
+                                                        action="{{ route('advisories.destroy', $adv->id) }}" method="POST"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button
+                                                            onclick="deleteData({{ $adv->id }}, '{{ $adv->place }}')"
+                                                            type="button" data-placement="bottom"
+                                                            onclick="deleteAdvisory()" class="btn btn-danger btn-sm"><i
+                                                                class="fas fa-trash"></i></button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -66,7 +77,7 @@
         </div>
     </div>
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{ asset('adminlte/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script type="text/javascript">
@@ -80,7 +91,22 @@
                     format: 'M/DD hh:mm A'
                 }
             });
-
         });
+
+        function deleteData(id, place) {
+            Swal.fire({
+                title: 'Are you sure you want to delete this?',
+                text: `Place:"${place}".`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Proceed'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            })
+        }
     </script>
 @endsection

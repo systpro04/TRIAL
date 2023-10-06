@@ -23,55 +23,51 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-6">
-                    <div class="info-box bg-success">
-                        <span class="info-box-icon"><i class="fas fa-newspaper"></i></span>
+                    <div class="info-box" style="background-color: teal">
+                        <span class="info-box-icon text-warning" ><i class="fas fa-newspaper"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">News</span>
-                            <span class="info-box-number">0</span>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 20%"></div>
+                            <span class="info-box-text text-light">News</span>
+                            <span class="info-box-number text-warning">{{ $news->count() }}</span>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{ ($news->count() / 100) * 100 }}%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
-
-                    <div class="info-box bg-warning">
-                        <span class="info-box-icon"><i class="fas fa-lightbulb"></i></span>
+                    <div class="info-box" style="background-color: teal">
+                        <span class="info-box-icon text-warning"><i class="fas fa-lightbulb"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Advisories</span>
-                            <span class="info-box-number">0</span>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 5%"></div>
+                            <span class="info-box-text text-light">Advisories</span>
+                            <span class="info-box-number text-warning">{{ $advisories->count() }}</span>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{ ($advisories->count() / 100) * 100 }}%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-6">
-
-                    <div class="info-box bg-danger">
-                        <span class="info-box-icon"><i class="fas fa-exclamation"></i></span>
+                    <div class="info-box" style="background-color: teal">
+                        <span class="info-box-icon text-warning"><i class="fas fa-exclamation"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Interruptions</span>
-                            <span class="info-box-number">0</span>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 35%"></div>
+                            <span class="info-box-text text-light">Interruptions</span>
+                            <span class="info-box-number text-warning">{{ $interruptions->count() }}</span>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{ ($interruptions->count() / 100) * 100 }}%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="col-lg-3 col-6">
-
-                    <div class="info-box bg-primary">
-                        <span class="info-box-icon"><i class="fas fa-user-plus"></i></span>
+                    <div class="info-box" style="background-color: teal">
+                        <span class="info-box-icon text-warning"><i class="fas fa-user-plus"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">User Account</span>
-                            <span class="info-box-number">{{ $users->count() }}</span>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 2%"></div>
+                            <span class="info-box-text text-light">User Account</span>
+                            <span class="info-box-number text-warning">{{ $users->count() }}</span>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{ ($users->count() / 100) * 100 }}%"></div>
                             </div>
                         </div>
                     </div>

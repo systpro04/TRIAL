@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\News_Advisory_Interruption\NEws;
+use App\Models\News_Advisory_Interruption\Advisory;
+use App\Models\News_Advisory_Interruption\Interruption;
 class HomeController extends Controller
 {
     /**
@@ -25,7 +28,9 @@ class HomeController extends Controller
     {
        
         $users = User::get();
-
-        return view('Dashboard', compact('users'));
+        $news = News::get();
+        $advisories = Advisory::get();
+        $interruptions = Interruption::get();
+        return view('Dashboard', compact('users', 'news', 'advisories', 'interruptions'));
     }
 }

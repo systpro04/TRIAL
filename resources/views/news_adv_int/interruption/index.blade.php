@@ -51,7 +51,12 @@
                                         <td>{{ $int->why }}</td>
                                         <td>{{ $int->dateTime }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a href="{{ route('interruptions.edit', $int) }}" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                                            <form id="delete-form-{{ $int->id }}" action="{{ route('interruptions.destroy', $int->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button onclick="deleteData({{ $int->id }}, '{{ $int->what }}', '{{ $int->where }}')" type="button" data-placement="bottom" onclick="deleteInterruptions()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -64,4 +69,38 @@
         </div>
     </div>
 </div>
+<script>
+    function deleteData(id, what, where) {
+        Swal.fire({
+            title: 'Are you sure you want to delete this?',
+            text: `"What:"${what}".`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Proceed'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        });
+    }
+
+    function deleteInterruptions() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to delete this?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Proceed'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.forms[0].submit();
+            }
+        });
+    }
+</script>
+
 @endsection

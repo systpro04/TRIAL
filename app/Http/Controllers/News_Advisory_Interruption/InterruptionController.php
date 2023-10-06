@@ -58,7 +58,7 @@ class InterruptionController extends Controller
         
         $interruptions->save();
         Alert::toast('Created Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
-        return redirect()->route('int.index')->with('toast_success','Successfully Saved');
+        return redirect()->route('interruptions.index')->with('toast_success','Successfully Saved');
     }
 
     /**
@@ -108,7 +108,7 @@ class InterruptionController extends Controller
         
         $interruption->save();
          Alert::toast('Updated Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
-        return redirect()->route('int.index')->with('toast_success','Successfully Saved');
+        return redirect()->route('interruptions.index')->with('toast_success','Successfully Saved');
     }
 
     /**
