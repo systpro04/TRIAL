@@ -60,7 +60,6 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary mt-2">Submit</button>
-                        <a href="{{ route('interruptions.index') }}" class="btn btn-sm btn-warning mt-2">Back</a>
                     </div>
                 </form>
             </div>

@@ -62,12 +62,12 @@
 
                 <div class="col-lg-3 col-6">
                     <div class="info-box" style="background-color: teal">
-                        <span class="info-box-icon text-warning"><i class="fas fa-user-plus"></i></span>
+                        <span class="info-box-icon text-warning"><i class="fas fa-upload"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text text-light">User Account</span>
-                            <span class="info-box-number text-warning">{{ $users->count() }}</span>
+                            <span class="info-box-text text-light">Uploaded Videos</span>
+                            <span class="info-box-number text-warning">{{ $uploads->count() }}</span>
                             <div class="progress" style="height: 10px;">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{ ($users->count() / 100) * 100 }}%"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{ ($uploads->count() / 100) * 100 }}%"></div>
                             </div>
                         </div>
                     </div>

@@ -75,7 +75,7 @@
                                                 <form id="delete-form-{{ $new->id }}" action="{{ route('news.destroy', $new->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" data-placement="bottom" onclick="deleteData({{ $new->id }},'{{ $new->title }}')" class="btn btn-sm btn-danger btndelete"><i class="fas fa-trash"></i></button>
+                                                    <button type="button" data-placement="bottom" onclick="deleteData({{ $new->id }},'{{ $new->title }}')" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

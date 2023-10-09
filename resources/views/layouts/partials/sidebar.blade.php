@@ -12,7 +12,7 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
 
-        <li class="nav-item has-treeview ">
+        <li class="nav-item">
             <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-tachometer-alt "></i>
                 <p>
@@ -48,6 +48,22 @@
                     </a>
                 </li>
             </ul>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('upload.index') }}" class="nav-link {{ request()->is('upload*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-upload "></i>
+                <p>
+                    Upload Videos
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('index') }}" class="nav-link {{ request()->is('search*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-file-alt"></i>
+                <p>
+                    Inquiry
+                </p>
+            </a>
         </li>
     </ul>
 </nav>

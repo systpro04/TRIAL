@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\News_Advisory_Interruption\NewsController;
 use App\Http\Controllers\News_Advisory_Interruption\AdvisoryController;
 use App\Http\Controllers\News_Advisory_Interruption\InterruptionController;
@@ -30,3 +31,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::resource('/news','App\Http\Controllers\News_Advisory_Interruption\NewsController');
 Route::resource('/advisories', 'App\Http\Controllers\News_Advisory_Interruption\AdvisoryController');
 Route::resource('/interruptions', 'App\Http\Controllers\News_Advisory_Interruption\InterruptionController');
+Route::resource('/upload', 'App\Http\Controllers\UploadController');
+
+Route::get('search', [InquiryController::class, 'index'])->name('index');
+Route::get('searchData', [InquiryController::class, 'search'])->name('search');
