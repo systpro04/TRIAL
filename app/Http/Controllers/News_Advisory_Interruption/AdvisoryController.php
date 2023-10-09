@@ -11,21 +11,8 @@ class AdvisoryController extends Controller
 {
     public function index(Request $request)
     {
-        // $advisories = Advisory::orderBy('created_at', 'desc')->paginate(4);
-        // return view('advisory.index', compact('advisories'));
-
-        $query = $request->input('query');
-
-        $query = $request->input('search');
-        $advisories = Advisory::orderBy('created_at', 'desc')
-                            ->when($query, function($q) use ($query) {
-                                return $q->where('place', 'like', '%'.$query.'%')
-                                         ->orWhere('info', 'like', '%'.$query.'%')
-                                         ->orWhere('dateTime', 'like', '%'.$query.'%');
-                            })
-                            ->paginate(10);
-    
-        return view('news_adv_int.advisory.index', compact('advisories', 'query'));
+        $advisories = Advisory::orderBy('created_at', 'desc')->paginate(5);
+        return view('news_adv_int.advisory.index', compact('advisories'));
     }
 
     /**
@@ -58,7 +45,7 @@ class AdvisoryController extends Controller
         $advisories->dateTime = $request->dateTime;
         
         $advisories->save();
-        Alert::toast('Created Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
+        toastr()->success('Created Successfully');
         return redirect()->route('advisories.index');
     }
 
@@ -106,7 +93,7 @@ class AdvisoryController extends Controller
         $advisory->dateTime = $request->dateTime;
        
         $advisory->save();
-        Alert::toast('Updated Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
+        toastr()->success('Updated Successfully');
         return redirect()->route('advisories.index');
     }
 
@@ -121,7 +108,7 @@ class AdvisoryController extends Controller
         $advisory = Advisory::find($id);
         $advisory->delete();
 
-        Alert::toast('Deleted Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
+        toastr()->success('Deleted Successfully');
         return redirect()->back();
     }
 

@@ -51,7 +51,9 @@
                                         <td>{{ $int->why }}</td>
                                         <td>{{ $int->dateTime }}</td>
                                         <td>
-                                            <a href="{{ route('interruptions.edit', $int) }}" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#edit{{$int->id}}">
+                                                <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>
+                                            </a>   
                                             <form id="delete-form-{{ $int->id }}" action="{{ route('interruptions.destroy', $int->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -59,9 +61,13 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    @include('news_adv_int.interruption.edit')
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-end">
+                                {{ $interruptions->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

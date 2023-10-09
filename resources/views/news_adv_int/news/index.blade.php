@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-reponsive">
-                            <table class="table table-striped shadow table-hover text-center" id="newsTable">
+                            <table class="table table-striped shadow table-hover text-center">
                                 <thead class="bg-primary text-center">
                                     <tr>
                                         <th>Image</th>
@@ -51,40 +51,41 @@
                                     @foreach ($news as $new)
                                         <tr>
                                             <td>
-                                                @if ($new->image)
-                                                    <div id="imageCarousel" class="carousel slide" data-ride="carousel">
-                                                        <div class="carousel-inner">
-                                                            @foreach (json_decode($new->image) as $key => $image)
-                                                                <div
-                                                                    class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                                                                    <img src="{{ asset('uploads/news/' . $image) }}"
-                                                                        class="d-block w-100" alt="Image"
-                                                                        style="width: 50px; height: 40px">
-                                                                </div>
-                                                            @endforeach
+                                                <div class="carousel-container">
+                                                    @if ($new->image)
+                                                        <div id="imageCarousel-{{ $new->id }}" class="carousel" data-ride="carousel">
+                                                                @foreach (json_decode($new->image) as $key => $image)
+                                                                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                                                        <img src="{{ asset('uploads/news/' . $image) }}" alt="Image" style="width: 100px ;height: 50px">
+                                                                    </div>
+                                                                @endforeach
                                                         </div>
-                                                    </div>
-                                                @else
-                                                    No image available
-                                                @endif
+                                                    @else
+                                                        No image available
+                                                    @endif
+                                                </div>
                                             </td>
                                             <td>{{ $new->title }}</td>
                                             <td>{{ $new->article }}</td>
                                             <td>{{ $new->dateTime }}</td>
                                             <td>
-                                                <a href="{{ route('news.edit', $new) }}">
-                                                    <button class="btn btn-success mx-1" type="submit"><i class="fas fa-edit"></i></i></button>
-                                                </a>
+                                                <a href="#" data-toggle="modal" data-target="#edit{{$new->id}}">
+                                                    <button class="btn btn-sm btn-success" type="button"><i class="fas fa-pen"></i></button>
+                                                </a>                                                
                                                 <form id="delete-form-{{ $new->id }}" action="{{ route('news.destroy', $new->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" data-placement="bottom" onclick="deleteData({{ $new->id }},'{{ $new->title }}')" class="btn btn-danger btndelete"><i class="fas fa-trash"></i></button>
+                                                    <button type="button" data-placement="bottom" onclick="deleteData({{ $new->id }},'{{ $new->title }}')" class="btn btn-sm btn-danger btndelete"><i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
+                                    @include('news_adv_int.news.edit')
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-end">
+                                {{ $news->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -92,8 +93,13 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<style>
+.carousel-container {
+    overflow: hidden;
+}
 
+</style>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#imageCarousel').carousel({

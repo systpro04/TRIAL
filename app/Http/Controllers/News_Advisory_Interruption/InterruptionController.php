@@ -6,24 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News_Advisory_Interruption\Interruption;
 use RealRashid\SweetAlert\Facades\Alert;
+
 class InterruptionController extends Controller
 {
     public function index(Request $request)
     {
-        $query = $request->input('query');
-    
-        $interruptions = Interruption::orderBy('created_at', 'desc')
-                            ->when($query, function($q) use ($query) {
-                                return $q->where('what', 'like', '%'.$query.'%')
-                                         ->orWhere('where', 'like', '%'.$query.'%')
-                                         ->orWhere('why', 'like', '%'.$query.'%')
-                                         ->orWhere('dateTime', 'like', '%'.$query.'%');
-                            })
-                            ->paginate(10);
-    
-        return view('news_adv_int.interruption.index', compact('interruptions', 'query'));
+        $interruptions = Interruption::orderBy('created_at', 'desc')->paginate(5);
+        return view('news_adv_int.interruption.index', compact('interruptions'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +34,7 @@ class InterruptionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'what' => 'required',
             'dateTime' => 'required',
             'where' => 'required',
@@ -55,10 +46,10 @@ class InterruptionController extends Controller
         $interruptions->dateTime = $request->dateTime;
         $interruptions->where = $request->where;
         $interruptions->why = $request->why;
-        
+
         $interruptions->save();
-        Alert::toast('Created Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
-        return redirect()->route('interruptions.index')->with('toast_success','Successfully Saved');
+        toastr()->success('Created Successfully');
+        return redirect()->route('interruptions.index');
     }
 
     /**
@@ -69,7 +60,7 @@ class InterruptionController extends Controller
      */
     public function show($id)
     {
- 
+
     }
 
     /**
@@ -94,7 +85,7 @@ class InterruptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'what' => 'required',
             'dateTime' => 'required',
             'where' => 'required',
@@ -105,10 +96,10 @@ class InterruptionController extends Controller
         $interruption->dateTime = $request->dateTime;
         $interruption->where = $request->where;
         $interruption->why = $request->why;
-        
+
         $interruption->save();
-         Alert::toast('Updated Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
-        return redirect()->route('interruptions.index')->with('toast_success','Successfully Saved');
+        toastr()->success('Updated Successfully');
+        return redirect()->route('interruptions.index');
     }
 
     /**
@@ -121,8 +112,8 @@ class InterruptionController extends Controller
     {
         $interruption = Interruption::find($id);
         $interruption->delete();
-        Alert::toast('Deleted Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
-        return redirect()->back()->with('toast_success','Successfully Delete');
+        toastr()->success('Deleted Successfully');
+        return redirect()->back();
     }
 
 }

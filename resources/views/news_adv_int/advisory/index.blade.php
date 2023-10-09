@@ -51,8 +51,9 @@
                                                 <td>{{ $adv->info }}</td>
                                                 <td>{{ $adv->dateTime }}</td>
                                                 <td>
-                                                    <a href="{{ route('advisories.edit', $adv) }}"
-                                                        class="btn btn-sm btn-success mx-1"><i class="fas fa-edit"></i></a>
+                                                    <a href="#" data-toggle="modal" data-target="#edit{{ $adv->id }}">
+                                                        <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>
+                                                    </a>  
                                                     <form id="delete-form-{{ $adv->id }}"
                                                         action="{{ route('advisories.destroy', $adv->id) }}" method="POST"
                                                         class="d-inline">
@@ -66,9 +67,14 @@
                                                     </form>
                                                 </td>
                                             </tr>
+                                            @include('news_adv_int.advisory.edit')
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="d-flex justify-content-end">
+                                    {{ $advisories->links() }}
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

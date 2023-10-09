@@ -15,11 +15,8 @@ class NewsController extends Controller
 {
    public function index(Request $request)
    {
-      $query = $request->input('query');
-
-      $news = News::orderBy('created_at', 'desc')->paginate(10);
-   
-      return view('news_adv_int.news.index', compact('news', 'query'));
+      $news = News::orderBy('created_at', 'desc')->paginate(5);
+      return view('news_adv_int.news.index', compact('news'));
    }
 
    /**
@@ -29,7 +26,7 @@ class NewsController extends Controller
     */
    public function create()
    {
-// 
+      // 
    }
 
    /**
@@ -69,7 +66,7 @@ class NewsController extends Controller
          $news->save();
       }
 
-      Alert::toast('Created Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
+      toastr()->success('Created Successfully');
       return redirect()->route('news.index');
 
    }
@@ -95,8 +92,8 @@ class NewsController extends Controller
     */
    public function edit($id)
    {
-      // $news = News::find($id);
-      // return view('news.edit',compact('news'));
+      $news = News::find($id);
+      return view('news_adv_int.news.edit', compact('news'));
    }
 
    /**
@@ -119,7 +116,6 @@ class NewsController extends Controller
 
       $news = News::find($id);
 
-      // Update the post without changing the image file if the image input is empty
       if ($request->image == null) {
          $news->update([
                'title' => $request->title,
@@ -127,12 +123,10 @@ class NewsController extends Controller
                'dateTime' => $request->dateTime,
          ]);
       }
-      // Otherwise, upload the new image file and update the post with the new image file
       else {
          if($request->hasfile('image'))
       {
          $image = [];
-
          foreach($request->file('image') as $image)
          {
             $nameImage = $image->getClientOriginalName();
@@ -148,7 +142,7 @@ class NewsController extends Controller
          $news->save();
       }
    }
-      Alert::toast('Updated Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
+      toastr()->success('Updated Successfully');
       return redirect()->route('news.index'); 
    }
 
@@ -176,7 +170,8 @@ class NewsController extends Controller
       }
       $news->delete();
 
-      Alert::toast('Deleted Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
+      toastr()->success('Deleted Successfully');
+      
       return redirect()->back();
    }
 }
