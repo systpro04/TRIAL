@@ -11,10 +11,10 @@
 
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-
+        <li class="nav-header text-primary">Admin Management</li>
         <li class="nav-item">
             <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-tachometer-alt "></i>
+                <i class="nav-icon fas fa-tachometer-alt  text-warning"></i>
                 <p>
                     Dashboard
                 </p>
@@ -22,28 +22,27 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-th-list"></i>
-                <p>
-                    Modules
-                    <i class="right fas fa-angle-left"></i>
+                <i class="nav-icon fas fa-th-list text-warning"></i>
+                <p>Modules
+                    <i class="right fas fa-angle-left text-warning"></i>
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item mt-2">
                     <a href="{{ route('news.index') }}" class="nav-link {{ request()->is('news*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-newspaper"></i>
+                        <i class="nav-icon fas fa-newspaper text-primary"></i>
                         <p>News</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('advisories.index') }}" class="nav-link {{ request()->is('advisories*') ? 'active' : '' }}">
-                        <i class="fas fa-lightbulb nav-icon"></i>
+                        <i class="fas fa-lightbulb nav-icon text-primary"></i>
                         <p>Advisories</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('interruptions.index') }}" class="nav-link {{ request()->is('interruptions*') ? 'active' : '' }}">
-                        <i class="fas fa-exclamation nav-icon"></i>
+                        <i class="fas fa-exclamation nav-icon text-primary"></i>
                         <p>Interruptions</p>
                     </a>
                 </li>
@@ -51,23 +50,18 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('upload.index') }}" class="nav-link {{ request()->is('upload*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-upload "></i>
-                <p>
-                    Upload Videos
-                </p>
+                <i class="nav-icon fas fa-upload  text-warning"></i>
+                <p>Upload Videos</p>
             </a>
         </li>
         <li class="nav-item">
             <a href="{{ route('index') }}" class="nav-link {{ request()->is('search*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-file-alt"></i>
-                <p>
-                    Inquiry
-                </p>
+                <i class="nav-icon fas fa-file-alt text-warning"></i>
+                <p>Inquiry</p>
             </a>
         </li>
     </ul>
 </nav>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const navTreeview = document.querySelector('.nav-treeview');
