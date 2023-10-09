@@ -11,55 +11,56 @@
                 <form method="POST" action="{{ route('interruptions.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="container">
-
                         <div class="row">
-                            <div class="mb-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">WHAT:</label>
-                                    <input type="text" class="form-control @error('what') is-invalid @enderror"
-                                        rows="1" name="what"></textarea>
-                                </div>
-                                @error('what')
+                            <div class="form-group label-floating">
+                                <label class="control-label">What</label>
+                                <input type="text" class="form-control @error('what') is-invalid @enderror"
+                                    rows="1" name="what"></textarea>
+                            </div>
+                            @error('what')
+                                <span>
                                     <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row ">
-                            <label class="col-form-label">WHEN:</label>
-                            <div class="col-5 mb-4">
-                                <div class="input-group date">
-                                    <input type="text" class="form-control @error('dateTime') is-invalid @enderror"
-                                        name="dateTime" id="datetimes" />
-                                </div>
-                            </div>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="row">
-                            <div class="mb-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">WHERE:</label>
-                                    <input type="text" class="form-control @error('where') is-invalid @enderror"
-                                        rows="" name="where">
+                            <div class="form-group">
+                                <label class="control-label">When</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control @error('dateTime') is-invalid @enderror"  name="dateTime" value="{{ old('dateTime') }}" id="interruption">
                                 </div>
-                                @error('where')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="mb-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">WHY:</label>
-                                    <textarea class="form-control @error('why') is-invalid @enderror" rows="1" name="why"></textarea>
-                                </div>
-                                @error('why')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                            <div class="form-group label-floating">
+                                <label class="control-label">Where</label>
+                                <input type="text" class="form-control @error('where') is-invalid @enderror"
+                                    rows="" name="where">
                             </div>
+                            @error('where')
+                                <span>
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                </span>
+                            @enderror
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary mt-2">Submit</button>
+
+                        <div class="row">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Why</label>
+                                <textarea class="form-control @error('why') is-invalid @enderror" rows="1" name="why"></textarea>
+                            </div>
+                            @error('why')
+                                <span>
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                </span>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                     </div>
                 </form>
             </div>

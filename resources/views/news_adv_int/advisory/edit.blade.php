@@ -15,17 +15,22 @@
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label">Place</label>
-                                <input type="text" class="form-control" name="place" placeholder="Place" value="{{ old('place',$adv->place) }}">
+                                <input type="text" class="form-control" name="place" placeholder="Place" value="{{ old('place', $adv->place) }}">
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="form-group">
-                                <label class="control-label">Date</label>
-                                {{-- <input type="text" class="form-control" name="dateTime" id="dateTime" value="{{ Carbon\Carbon::parse($adv->dateTime)->format('m/d/y') }}"> --}}
-                                <input type="text" class="form-control" name="dateTime" id="dateTime" value="{{ old('dateTime', $adv->dateTime ) }}">
-
+                                <label class="control-label">Date and Time</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control @error('dateTime') is-invalid @enderror"  name="dateTime" value="{{ old('dateTime', $adv->dateTime ) }}" id="adv">
+                                </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label">Information</label>
@@ -39,3 +44,16 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#adv').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        })
+    });
+</script>

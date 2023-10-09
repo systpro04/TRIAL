@@ -12,45 +12,41 @@
                     @csrf
                     <div class="container">
                         <div class="row">
-                            <div class="mb-3 ">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Place</label>
-                                    <input type="text" class="form-control @error('place') is-invalid @enderror"
-                                        name="place" placeholder="Place" value="{{ old('place') }}">
-                                </div>
-                                @error('place')
-                                    <span>
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    </span>
-                                @enderror
+                            <div class="form-group">
+                                <label class="control-label">Place</label>
+                                <input type="text" class="form-control @error('place') is-invalid @enderror"
+                                    name="place" placeholder="Place" value="{{ old('place') }}">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Date and Time</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control float-right @error('dateTime') is-invalid @enderror" name="dateTime" id="dateTime" value="{{ old('dateTime') }}">
-                                      </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Information</label>
-                                    <textarea class="form-control @error('info') is-invalid @enderror " rows="4" name="info"
-                                        placeholder="Information">{{ old('info') }}</textarea>
-                                </div>
-                                @error('info')
+                            @error('place')
+                                <span>
                                     <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="control-label">Date and Time</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control @error('dateTime') is-invalid @enderror"  name="dateTime" value="{{ old('dateTime') }}" id="interruption">
+                                </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary mt-2">Submit</button>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="control-label">Information</label>
+                                <textarea class="form-control @error('info') is-invalid @enderror " rows="4" name="info"
+                                    placeholder="Information">{{ old('info') }}</textarea>
+                            </div>
+                            @error('info')
+                                <span>
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                </span>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                     </div>
                 </form>
             </div>

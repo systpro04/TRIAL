@@ -18,20 +18,17 @@
         </div>
         <hr>
     </div>
-
     <div class="container-fluid ">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary mt-2 card-outline shadow"
-                    style="background-color: rgba(245, 245, 245, 0.57)">
+                <div class="card card-primary card-outline shadow">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-8">
                                 <h4 class="card-title">News Information List</h4>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal"
-                                    data-target="#create"><i class="fas fa-plus-circle"></i></a>
+                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal"  data-target="#create"><i class="fas fa-plus-circle"></i></a>
                             </div>
                         </div>
                     </div>
@@ -67,7 +64,7 @@
                                             </td>
                                             <td>{{ $new->title }}</td>
                                             <td>{{ $new->article }}</td>
-                                            <td>{{ $new->dateTime }}</td>
+                                            <td>{{ Carbon\Carbon::parse($new->dateTime)->format('M d, Y h:s A') }}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#edit{{$new->id}}">
                                                     <button class="btn btn-sm btn-success" type="button"><i class="fas fa-pen"></i></button>
@@ -75,7 +72,7 @@
                                                 <form id="delete-form-{{ $new->id }}" action="{{ route('news.destroy', $new->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" data-placement="bottom" onclick="deleteData({{ $new->id }},'{{ $new->title }}')" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                                    <button type="button" data-placement="bottom" onclick="deleteData({{ $new->id }})" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -106,10 +103,9 @@
             interval: 1500
         });
     });
-    function deleteData(id, title) {
+    function deleteData(id) {
         Swal.fire({
             title: 'Are you sure you want to delete this?',
-            text: `Title:" ${title}".`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

@@ -16,11 +16,12 @@
                 </div>
             </div>
         </div>
+    <hr>
     </div>
     <div class="container-fluid ">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary mt-2 card-outline shadow" style="background-color: rgba(245, 245, 245, 0.57)"  >
+                <div class="card card-primary card-outline shadow">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-8">
@@ -37,9 +38,9 @@
                                 <thead class="bg-primary text-center">
                                     <tr>
                                         <th>What</th>
-                                        <th>Date</th>
                                         <th>Where</th>
                                         <th>Why</th>
+                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -49,7 +50,7 @@
                                         <td>{{ $int->what }}</td>
                                         <td>{{ $int->where }}</td>
                                         <td>{{ $int->why }}</td>
-                                        <td>{{ $int->dateTime }}</td>
+                                        <td>{{ $int->formattedDateTime }} - {{ $int->formattedEndDate }}</td>
                                         <td>
                                             <a href="#" data-toggle="modal" data-target="#edit{{$int->id}}">
                                                 <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>
@@ -57,7 +58,7 @@
                                             <form id="delete-form-{{ $int->id }}" action="{{ route('interruptions.destroy', $int->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button onclick="deleteData({{ $int->id }}, '{{ $int->what }}', '{{ $int->where }}')" type="button" data-placement="bottom" onclick="deleteInterruptions()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button onclick="deleteData({{ $int->id }})" type="button" data-placement="bottom" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </form>
                                         </td>
                                     </tr>
@@ -76,10 +77,9 @@
     </div>
 </div>
 <script>
-    function deleteData(id, what, where) {
+    function deleteData(id) {
         Swal.fire({
             title: 'Are you sure you want to delete this?',
-            text: `"What:"${what}".`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -91,22 +91,5 @@
             }
         });
     }
-
-    function deleteInterruptions() {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You want to delete this?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Proceed'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.forms[0].submit();
-            }
-        });
-    }
 </script>
-
 @endsection

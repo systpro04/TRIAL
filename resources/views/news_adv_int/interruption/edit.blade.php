@@ -14,29 +14,29 @@
                     <div class="container">
                         <div class="row">
                             <div class="form-group">
-                                <label class="control-label">WHAT:</label>
-                                <input type="text" class="form-control" rows="1" name="what" value="{{ $int->what}} "></textarea>
+                                <label class="control-label">What</label>
+                                <input type="text" class="form-control" rows="1" name="what" value="{{ old('what', $int->what )}} "></textarea>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <label class="control-label">WHEN:</label>
-                                <input type="text" class="form-control" name="dateTime" id="datetimes" value="{{ $int->dateTime }}"/>
+                                <label class="control-label">When</label>
+                                <input type="text" class="form-control" name="dateTime" id="int" value="{{ old('dateTime', $int->dateTime ) }}">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <label class="control-label">WHERE:</label>
-                                <input type="text" class="form-control" name="where" value="{{ $int->where }}">
+                                <label class="control-label">Where</label>
+                                <input type="text" class="form-control" name="where" value="{{ old('where', $int->where ) }}">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <label class="control-label">WHY:</label>
-                                <textarea class="form-control" rows="1" name="why" value="">{{ $int->why }}</textarea>
+                                <label class="control-label">Why</label>
+                                <textarea class="form-control" rows="1" name="why" value="">{{ old('why', $int->why )}}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary mt-2">Submit</button>
@@ -46,3 +46,16 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#int').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        })
+    });
+</script>

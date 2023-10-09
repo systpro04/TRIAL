@@ -21,10 +21,10 @@
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label">Date</label>
-                                {{-- <input type="text" class="form-control" name="dateTime" id="dateTime" value="{{ Carbon\Carbon::parse($new)->format('m/d/y') }}"> --}}
-                                <input type="text" class="form-control" name="dateTime" id="dateTime" value="{{ $new->dateTime }}">
+                                <input type="datetime-local" class="form-control" name="dateTime" id="dateTime" value="{{ $new->dateTime }}">
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label">Article</label>
