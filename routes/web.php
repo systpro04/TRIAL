@@ -32,6 +32,7 @@ Route::resource('/news','App\Http\Controllers\News_Advisory_Interruption\NewsCon
 Route::resource('/advisories', 'App\Http\Controllers\News_Advisory_Interruption\AdvisoryController');
 Route::resource('/interruptions', 'App\Http\Controllers\News_Advisory_Interruption\InterruptionController');
 Route::resource('/upload', 'App\Http\Controllers\UploadController');
+Route::resource('/link', 'App\Http\Controllers\LinkController');
 
 Route::get('search', [InquiryController::class, 'index'])->name('index');
 Route::get('searchData', [InquiryController::class, 'search'])->name('search');

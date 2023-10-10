@@ -13,11 +13,9 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
         <li class="nav-header text-primary">Admin Management</li>
         <li class="nav-item">
-            <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}">
+            <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard*') ? 'bg-secondary active' : '' }}">
                 <i class="nav-icon fas fa-tachometer-alt  text-warning"></i>
-                <p>
-                    Dashboard
-                </p>
+                <p>Dashboard</p>
             </a>
         </li>
         <li class="nav-item">
@@ -29,19 +27,19 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item mt-2">
-                    <a href="{{ route('news.index') }}" class="nav-link {{ request()->is('news*') ? 'active' : '' }}">
+                    <a href="{{ route('news.index') }}" class="nav-link {{ request()->is('news*') ? 'bg-secondary active' : '' }}">
                         <i class="nav-icon fas fa-newspaper text-primary"></i>
                         <p>News</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('advisories.index') }}" class="nav-link {{ request()->is('advisories*') ? 'active' : '' }}">
+                    <a href="{{ route('advisories.index') }}" class="nav-link {{ request()->is('advisories*') ? 'bg-secondary active' : '' }}">
                         <i class="fas fa-lightbulb nav-icon text-primary"></i>
                         <p>Advisories</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('interruptions.index') }}" class="nav-link {{ request()->is('interruptions*') ? 'active' : '' }}">
+                    <a href="{{ route('interruptions.index') }}" class="nav-link {{ request()->is('interruptions*') ? 'bg-secondary active' : '' }}">
                         <i class="fas fa-exclamation nav-icon text-primary"></i>
                         <p>Interruptions</p>
                     </a>
@@ -49,13 +47,19 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="{{ route('upload.index') }}" class="nav-link {{ request()->is('upload*') ? 'active' : '' }}">
+            <a href="{{ route('upload.index') }}" class="nav-link {{ request()->is('upload*') ? 'bg-secondary active' : '' }}">
                 <i class="nav-icon fas fa-upload  text-warning"></i>
                 <p>Upload Videos</p>
             </a>
         </li>
+        {{-- <li class="nav-item">
+            <a href="{{ route('link.index') }}" class="nav-link {{ request()->is('link*') ? 'bg-secondary active' : '' }}">
+                <i class="nav-icon fas fa-book-open text-warning"></i>
+                <p>Other Info | Link</p>
+            </a>
+        </li> --}}
         <li class="nav-item">
-            <a href="{{ route('index') }}" class="nav-link {{ request()->is('search*') ? 'active' : '' }}">
+            <a href="{{ route('index') }}" class="nav-link {{ request()->is('search*') ? 'bg-secondary active' : '' }}">
                 <i class="nav-icon fas fa-file-alt text-warning"></i>
                 <p>Inquiry</p>
             </a>

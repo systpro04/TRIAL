@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Upload;
 use File;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class UploadController extends Controller
 {
     public function index()
@@ -79,6 +79,7 @@ class UploadController extends Controller
         }
         $uploads->delete();
         toastr()->success('Deleted Successfully');
+        // Alert::toast('Deleted Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
         return redirect()->back();
     }
 
