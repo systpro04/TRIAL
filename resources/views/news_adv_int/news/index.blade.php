@@ -64,7 +64,7 @@
                                             </td>
                                             <td>{{ $new->title }}</td>
                                             <td>{{ $new->article }}</td>
-                                            <td>{{ Carbon\Carbon::parse($new->dateTime)->format('M d, Y h:s A') }}</td>
+                                            <td>{{ $new->dateTime }}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#edit{{$new->id}}">
                                                     <button class="btn btn-sm btn-success" type="button"><i class="fas fa-pen"></i></button>

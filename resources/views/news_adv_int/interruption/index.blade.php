@@ -50,7 +50,8 @@
                                         <td>{{ $int->what }}</td>
                                         <td>{{ $int->where }}</td>
                                         <td>{{ $int->why }}</td>
-                                        <td>{{ $int->formattedDateTime }} - {{ $int->formattedEndDate }}</td>
+                                        <td> {{ $int->dateTime }}</td>
+                                        
                                         <td>
                                             <a href="#" data-toggle="modal" data-target="#edit{{$int->id}}">
                                                 <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>
@@ -76,6 +77,8 @@
         </div>
     </div>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     function deleteData(id) {
         Swal.fire({

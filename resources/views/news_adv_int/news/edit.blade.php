@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit{{ $new->id }}" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{ $new->id }}" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -18,10 +18,16 @@
                                 <input type="text" class="form-control" name="title" placeholder="Title" value="{{ $new->title }}">
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label">Date</label>
-                                <input type="datetime-local" class="form-control" name="dateTime" id="dateTime" value="{{ $new->dateTime }}">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control"  name="dateTime"  value="{{ old('dateTime', $new->dateTime ) }}" id="editnews">
+                                </div>
                             </div>
                         </div>
                         
@@ -45,3 +51,18 @@
         </div>
     </div>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#editnews").flatpickr({
+            altInput: true,
+            enableTime: true,
+            startDate: moment().startOf("hour"),
+            endDate: moment().startOf("hour").add(32, "hour"),
+            dateFormat: "Y-m-d H:i K",
+            weekNumbers: true
+        });
+    });
+</script>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit{{ $adv->id }}" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{ $adv->id }}" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -44,16 +44,19 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <script>
     $(document).ready(function () {
-        $('#adv').daterangepicker({
-            timePicker: true,
-            timePickerIncrement: 30,
-            locale: {
-                format: 'MM/DD/YYYY hh:mm A'
-            }
-        })
+        $("#adv").flatpickr({
+            altInput: true,
+            enableTime: true,
+            startDate: moment().startOf("hour"),
+            endDate: moment().startOf("hour").add(32, "hour"),
+            dateFormat: "Y-m-d H:i K",
+            mode: "range",
+            weekNumbers: true
+        });
     });
 </script>

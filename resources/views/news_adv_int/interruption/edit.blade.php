@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit{{$int->id}}" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{$int->id}}" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -18,11 +18,15 @@
                                 <input type="text" class="form-control" rows="1" name="what" value="{{ old('what', $int->what )}} "></textarea>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label">When</label>
-                                <input type="text" class="form-control" name="dateTime" id="int" value="{{ old('dateTime', $int->dateTime ) }}">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control"  name="dateTime" value="{{ old('dateTime', $int->dateTime ) }}" id="int">
+                                </div>
                             </div>
                         </div>
 
@@ -46,16 +50,19 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <script>
     $(document).ready(function () {
-        $('#int').daterangepicker({
-            timePicker: true,
-            timePickerIncrement: 30,
-            locale: {
-                format: 'MM/DD/YYYY hh:mm A'
-            }
-        })
+        $("#int").flatpickr({
+            altInput: true,
+            enableTime: true,
+            startDate: moment().startOf("hour"),
+            endDate: moment().startOf("hour").add(32, "hour"),
+            dateFormat: "Y-m-d H:i K",
+            mode: "range",
+            weekNumbers: true
+        });
     });
 </script>

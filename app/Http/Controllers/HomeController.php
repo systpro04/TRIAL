@@ -8,8 +8,8 @@ use App\Models\News_Advisory_Interruption\NEws;
 use App\Models\News_Advisory_Interruption\Advisory;
 use App\Models\News_Advisory_Interruption\Interruption;
 use App\Models\Home_Image;
-use Image;
 use File;
+
 class HomeController extends Controller
 {
     /**
@@ -29,46 +29,36 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-       
-        $uploads = Upload::get();
-        $news = News::get();
-        $advisories = Advisory::get();
-        $interruptions = Interruption::get();
+
+        $uploads = Upload::get()->count();
+        $news = News::get()->count();
+        $advisories = Advisory::get()->count();
+        $interruptions = Interruption::get()->count();
         return view('Dashboard', compact('uploads', 'news', 'advisories', 'interruptions'));
     }
 
-    public function store(Request $request, $id){
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+        ]);
 
-        $img = Home_Image::find($id);
+        if ($request->hasfile('image')) {
 
-        $request->validate([
-            'images*' => 'required|mimes:jpeg,png,jpg,gif,svg'
-            ]);
-        $images = json_decode($img->images,true);
-        if (is_array($images) && !empty($images)){
-        foreach ($images as $deleteimage) {
-                if (File::exists('uploads/home_images/' .$deleteimage)) {
-                    File::delete('uploads/home_images/' .$deleteimage);
-                }
+            foreach ($request->file('image') as $image) {
+                $nameImage = $image->getClientOriginalName();
+                $image->move(public_path() . '/uploads/home_images', $nameImage);
+                $data[] = $nameImage;
             }
 
+
+            $images = new Home_Image();
+            $images->image = json_encode($data);
+
+            $images->save();
         }
 
-        if ($request->hasFile('images')){
-
-            foreach($request->file('images') as $image){
-
-                $name = $image->getClientOriginalName();
-                $image->move('uploads/home_images', $name);
-                $data[] = $name;
-        }
-    }
-
-        $img->images = json_encode($data);
-        $img->save();
-        toastr()->success('Images Uploaded Successfully');
+        toastr()->success('Image Added Successfully');
         return redirect()->back();
-
     }
 }
-

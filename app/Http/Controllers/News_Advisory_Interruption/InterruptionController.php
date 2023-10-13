@@ -13,13 +13,7 @@ class InterruptionController extends Controller
     public function index(Request $request)
     {
         $interruptions = Interruption::orderBy('created_at', 'desc')->paginate(5);
-        foreach ($interruptions as $int) {
-            $dateStrings = explode(' - ', $int->dateTime);
-            $int->formattedDateTime = Carbon::createFromFormat('m/d/Y h:iA', $dateStrings[0])->format('M d, Y h:i A');
-            $int->formattedEndDate = Carbon::createFromFormat('m/d/Y h:iA', $dateStrings[1])->format('M d, Y h:i A');
-        }
-    
-    
+
         return view('news_adv_int.interruption.index', compact('interruptions'));
     }
 

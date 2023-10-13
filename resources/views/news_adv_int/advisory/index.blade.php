@@ -49,7 +49,7 @@
                                         <tr>
                                             <td>{{ $adv->place }}</td>
                                             <td>{{ $adv->info }}</td>
-                                            <td>{{ $adv->formattedDateTime }} - {{ $adv->formattedEndDate }}</td>
+                                            <td> {{ $adv->dateTime }}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#edit{{ $adv->id }}">
                                                     <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>
@@ -60,7 +60,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button
-                                                        onclick="deleteData({{ $adv->id }}, '{{ $adv->place }}')"
+                                                        onclick="deleteData({{ $adv->id }})"
                                                         type="button" data-placement="bottom"
                                                         onclick="deleteAdvisory()" class="btn btn-danger btn-sm"><i
                                                             class="fas fa-trash"></i></button>
@@ -83,13 +83,11 @@
 </div>
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="{{ asset('adminlte/plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
 <script>
-    function deleteData(id, place) {
+    function deleteData(id) {
         Swal.fire({
             title: 'Are you sure you want to delete this?',
-            text: `Place:"${place}".`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

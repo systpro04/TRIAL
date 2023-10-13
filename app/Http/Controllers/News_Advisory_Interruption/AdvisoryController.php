@@ -12,16 +12,6 @@ class AdvisoryController extends Controller
     public function index(Request $request)
     {
         $advisories = Advisory::orderBy('created_at', 'desc')->paginate(5);
-
-        foreach ($advisories as $adv) {
-            // Split the date range into start and end date strings
-            $dateStrings = explode(' - ', $adv->dateTime);
-    
-            // Parse start and end dates
-            $adv->formattedDateTime = Carbon::createFromFormat('m/d/Y h:iA', $dateStrings[0])->format('M d, Y h:i A');
-            $adv->formattedEndDate = Carbon::createFromFormat('m/d/Y h:iA', $dateStrings[1])->format('M d, Y h:i A');
-        }
-
         return view('news_adv_int.advisory.index', compact('advisories'));
     }
 
