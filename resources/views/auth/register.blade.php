@@ -23,7 +23,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <input id="username" placeholder="Userame" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
+                                <input id="username" placeholder="Username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
                                 
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">

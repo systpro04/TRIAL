@@ -1,13 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    @if(Session::has('login_message'))
-        <div class="alert alert-success">
-            {{ Session::get('login_message') }}
-        </div>
-    @endif
-
     <div class="container d-flex justify-content-center mt-5">
         <div class="row">
             <div class="col-md-12">
@@ -17,11 +10,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <input id="username" placeholder="Username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autofocus>
-                            @error('username')
+                            {{-- @error('username')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror --}}
                         </div>
                     </div>
 
@@ -30,24 +23,21 @@
                         
                         <div class="col-md-12">
                             <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
-                            @error('password')
+                            {{-- @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror --}}
                         </div>
                     </div>
-                    
-
-                            <button type="submit" class="button_submit">
-                               <i class="fas fa-sign-in-alt"></i>  Log In
-                            </button>
-
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}" style="text-decoration: none">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            @endif
+                        <button type="submit" class="button_submit">
+                            <i class="fas fa-sign-in-alt"></i>  Log In
+                        </button>
+                        @if (Route::has('password.request'))
+                            <a class="btn btn-link" href="{{ route('password.request') }}" style="text-decoration: none">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                        @endif
                     </div>
                 </form>
             </div>

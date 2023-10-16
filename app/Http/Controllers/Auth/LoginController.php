@@ -44,6 +44,11 @@ class LoginController extends Controller
         return 'username';
     }
 
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        toastr()->success('Invalid credentials. Please try again.', 'Login Failed');
+        return redirect()->back()->withInput($request->only($this->username(), 'remember'))->withErrors(['username' => trans('auth.failed')]);
+    }
     protected function authenticated(Request $request, $user)
     {
         toastr()->success('Login Successfully', 'Welcome back, ' . $user->name);
