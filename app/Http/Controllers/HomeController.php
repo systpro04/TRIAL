@@ -58,7 +58,7 @@ class HomeController extends Controller
             $images->save();
         }
 
-        toastr()->success('Image Added Successfully');
+        toastr()->success('Image Added Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->back();
     }
 }

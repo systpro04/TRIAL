@@ -46,17 +46,19 @@ class LoginController extends Controller
 
     protected function sendFailedLoginResponse(Request $request)
     {
-        toastr()->success('Invalid credentials. Please try again.', 'Login Failed');
+        toastr()->success('Invalid credentials. Please try again.', 'Login Failed', ['iconClass' => 'toast-error']);
         return redirect()->back()->withInput($request->only($this->username(), 'remember'))->withErrors(['username' => trans('auth.failed')]);
     }
     protected function authenticated(Request $request, $user)
     {
-        toastr()->success('Login Successfully', 'Welcome back, ' . $user->name);
+        toastr()->success('Login Successfully', 'Welcome back, ' . $user->name, ['iconClass' => 'toast-success']);
         return redirect()->intended($this->redirectPath());
     }
     protected function loggedOut(Request $request)
     {
-        toastr()->success('Logout Successfully');
+        // toastr()->success('Logout Successfully');
+        toastr()->success('Logout Successfully', 'Success', ['iconClass' => 'toast-success']);
+
         return redirect('/');
     }
 

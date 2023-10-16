@@ -50,7 +50,7 @@ class InterruptionController extends Controller
         $interruptions->why = $request->why;
 
         $interruptions->save();
-        toastr()->success('Created Successfully');
+        toastr()->success('Created Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->route('interruptions.index');
     }
 
@@ -100,7 +100,7 @@ class InterruptionController extends Controller
         $interruption->why = $request->why;
 
         $interruption->save();
-        toastr()->success('Updated Successfully');
+        toastr()->success('Updated Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->route('interruptions.index');
     }
 
@@ -114,7 +114,7 @@ class InterruptionController extends Controller
     {
         $interruption = Interruption::find($id);
         $interruption->delete();
-        toastr()->success('Deleted Successfully');
+        toastr()->success('Deleted Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->back();
     }
 

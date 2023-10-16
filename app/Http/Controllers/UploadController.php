@@ -64,7 +64,7 @@ class UploadController extends Controller
         }
 
         $uploads->update();
-        toastr()->success('Video Updated Successfully');
+        toastr()->success('Video Updated Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->route('upload.index');
 
     }
@@ -78,7 +78,7 @@ class UploadController extends Controller
             File::delete($destination);
         }
         $uploads->delete();
-        toastr()->success('Deleted Successfully');
+        toastr()->success('Deleted Successfully', 'Success', ['iconClass' => 'toast-success']);
         // Alert::toast('Deleted Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
         return redirect()->back();
     }

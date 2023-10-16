@@ -66,7 +66,7 @@ class NewsController extends Controller
          $news->save();
       }
 
-      toastr()->success('Created Successfully');
+      toastr()->success('Created Successfully', 'Success', ['iconClass' => 'toast-success']);
       return redirect()->route('news.index');
 
    }
@@ -142,7 +142,7 @@ class NewsController extends Controller
          $news->save();
       }
    }
-      toastr()->success('Updated Successfully');
+      toastr()->success('Updated Successfully', 'Success', ['iconClass' => 'toast-success']);
       return redirect()->route('news.index'); 
    }
 
@@ -170,7 +170,7 @@ class NewsController extends Controller
       }
       $news->delete();
 
-      toastr()->success('Deleted Successfully');
+      toastr()->success('Deleted Successfully', 'Success', ['iconClass' => 'toast-success']);
       
       return redirect()->back();
    }

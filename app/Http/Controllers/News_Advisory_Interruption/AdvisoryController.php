@@ -45,7 +45,7 @@ class AdvisoryController extends Controller
         $advisories->dateTime = $request->dateTime;
         
         $advisories->save();
-        toastr()->success('Created Successfully');
+        toastr()->success('Created Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->route('advisories.index');
     }
 
@@ -93,7 +93,7 @@ class AdvisoryController extends Controller
         $advisory->dateTime = $request->dateTime;
        
         $advisory->save();
-        toastr()->success('Updated Successfully');
+        toastr()->success('Updated Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->route('advisories.index');
     }
 
@@ -108,7 +108,7 @@ class AdvisoryController extends Controller
         $advisory = Advisory::find($id);
         $advisory->delete();
 
-        toastr()->success('Deleted Successfully');
+        toastr()->success('Deleted Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->back();
     }
 
