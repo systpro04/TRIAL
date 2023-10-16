@@ -14,8 +14,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label">Place</label>
-                                <input type="text" class="form-control @error('place') is-invalid @enderror"
-                                    name="place" placeholder="Place" value="{{ old('place') }}">
+                                <input type="text" class="form-control @error('place') is-invalid @enderror" name="place" placeholder="Place" value="{{ old('place') }}">
                             </div>
                             @error('place')
                                 <span>
@@ -37,8 +36,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label">Information</label>
-                                <textarea class="form-control @error('info') is-invalid @enderror " rows="4" name="info"
-                                    placeholder="Information">{{ old('info') }}</textarea>
+                                <textarea class="form-control @error('info') is-invalid @enderror " rows="4" name="info" placeholder="Information">{{ old('info') }}</textarea>
                             </div>
                             @error('info')
                                 <span>

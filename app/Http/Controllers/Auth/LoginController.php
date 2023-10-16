@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -41,6 +42,17 @@ class LoginController extends Controller
 
     public function username() {
         return 'username';
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        toastr()->success('Login Successfully', 'Welcome back, ' . $user->name);
+        return redirect()->intended($this->redirectPath());
+    }
+    protected function loggedOut(Request $request)
+    {
+        toastr()->success('Logout Successfully');
+        return redirect('/');
     }
 
 }
