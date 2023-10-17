@@ -27,7 +27,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a href="#" class="brand-link">
+                <a href="{{ route('user_home') }}" class="brand-link">
                     <img src="{{ asset('images/users/flames.png') }}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: 1 ; color:rgb(255, 230, 0)">
                     <span class="brand-text font-weight-light">Trial and Error</span>
                 </a>
@@ -42,9 +42,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}"> Login</a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}"> Register</a>
-                                </li>
+                                </li> --}}
                             @endif
                         @else
                             <li class="nav-item dropdown">

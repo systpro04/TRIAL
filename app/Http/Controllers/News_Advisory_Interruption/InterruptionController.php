@@ -14,7 +14,7 @@ class InterruptionController extends Controller
     {
         $interruptions = Interruption::orderBy('created_at', 'desc')->paginate(5);
 
-        return view('news_adv_int.interruption.index', compact('interruptions'));
+        return view('ADMIN_VIEW.news_adv_int.interruption.index', compact('interruptions'));
     }
 
     /**

@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News_Advisory_Interruption\Advisory;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 class AdvisoryController extends Controller
 {
     public function index(Request $request)
     {
         $advisories = Advisory::orderBy('created_at', 'desc')->paginate(5);
-        return view('news_adv_int.advisory.index', compact('advisories'));
+        return view('ADMIN_VIEW.news_adv_int.advisory.index', compact('advisories'));
     }
 
     /**
@@ -66,11 +67,11 @@ class AdvisoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    // public function edit($id)
+    // {
         // $advisory = Advisory::find($id);
         // return view('advisory.edit',compact('advisory'));
-    }
+    // }
 
     /**
      * Update the specified resource in storage.

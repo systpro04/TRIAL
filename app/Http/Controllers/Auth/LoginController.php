@@ -52,7 +52,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         toastr()->success('Login Successfully', 'Welcome back, ' . $user->name, ['iconClass' => 'toast-success']);
-        return redirect()->intended($this->redirectPath());
+        return redirect()->route('dashboard');
     }
     protected function loggedOut(Request $request)
     {
