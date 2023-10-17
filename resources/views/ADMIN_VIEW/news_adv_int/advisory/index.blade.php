@@ -49,7 +49,7 @@
                                         <tr>
                                             <td>{{ $adv->place }}</td>
                                             <td>{{ $adv->info }}</td>
-                                            <td> {{ $adv->dateTime }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($int->startDateTime)->format('M. d h:i A') }} to {{ \Carbon\Carbon::parse($int->endDateTime)->addDay()->format('M. d, Y h:i A') }}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#edit{{ $adv->id }}">
                                                     <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>

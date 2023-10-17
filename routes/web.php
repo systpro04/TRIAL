@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\USER_VIEW\HomeController as Home;
 use App\Http\Controllers\USER_VIEW\AboutController as About;
+use App\Http\Controllers\USER_VIEW\ServicesController as Services;
+use App\Http\Controllers\USER_VIEW\ACHLController as Other;
+use App\Http\Controllers\USER_VIEW\NIAController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +50,13 @@ Route::group(['middleware' => ['role:Super-Admin|Admin']], function () {
 });
 
 //USER_ROUTES
-Route::get('/home', [Home::class, 'index'])->name('user_home');
+Route::get('/', [Home::class, 'home'])->name('user_home');
 Route::get('/about', [About::class, 'index'])->name('user_about');
+Route::get('/services', [Services::class, 'index'])->name('user_service');
+Route::get('/awards', [Other::class, 'award'])->name('awards');
+Route::get('/cores', [Other::class, 'core'])->name('cores');
+Route::get('/leaders', [Other::class, 'leader'])->name('leaders');
+Route::get('/history', [Other::class, 'history'])->name('history');
+Route::get('/allnews', [NIAController::class, 'allnews'])->name('all_news');
+Route::get('/allint', [NIAController::class, 'allint'])->name('all_interruptions');
+Route::get('/alladv', [NIAController::class, 'alladv'])->name('all_advisories');

@@ -50,7 +50,7 @@
                                         <td>{{ $int->what }}</td>
                                         <td>{{ $int->where }}</td>
                                         <td>{{ $int->why }}</td>
-                                        <td> {{ $int->dateTime }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($int->startDateTime)->format('M. d h:i A') }} to {{ \Carbon\Carbon::parse($int->endDateTime)->addDay()->format('M. d, Y h:i A') }}</td>
                                         
                                         <td>
                                             <a href="#" data-toggle="modal" data-target="#edit{{$int->id}}">
