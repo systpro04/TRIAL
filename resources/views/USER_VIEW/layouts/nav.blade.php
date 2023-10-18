@@ -1,4 +1,4 @@
-<header style="background: teal; border-bottom: 3px solid goldenrod;">
+{{-- <header style="background: teal; border-bottom: 3px solid goldenrod;">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <nav class="navbar-social">
             <ul>
@@ -15,7 +15,7 @@
             </ul>
         </nav>
     </div>
-</header>
+</header> --}}
 
 <header id="header" class="header d-flex align-items-center teal-bg">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -30,7 +30,7 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a href="{{ route('user_home') }}" class="{{ request()->is('home*') ? 'active' : '' }}">Home</a></li>
-                <li><a href="{{ route('user_about') }}" class="{{ request()->is('about*') ? 'active' : '' }}">About Us</a></li>
+                <li><a href="{{ route('user_about') }}" class="{{ request()->is('about*') ? 'active' : '' }}">History</a></li>
                 <li><a href="{{ route('user_service') }}" class="{{ request()->is('services*') ? 'active' : '' }}">Services</a></li>
                 <li class="dropdown"><a href="#" class="{{ request()->is('allnews*', 'allint*', 'alladv*' ) ? 'active' : '' }}" ><span>News and Interruptions</span><i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
@@ -44,7 +44,6 @@
                         <li><a href="{{ route('awards') }}" class="{{ request()->is('awards*') ? 'active' : '' }}">Awards</a></li>
                         <li><a href="{{ route('cores') }}" class="{{ request()->is('cores*') ? 'active' : '' }}">Core Values</a></li>
                         <li><a href="{{ route('leaders') }}" class="{{ request()->is('leaders*') ? 'active' : '' }}">Leaders</a></li>
-                        <li><a href="{{ route('history') }}" class="{{ request()->is('history*') ? 'active' : '' }}">History</a></li>
                     </ul>
                 </li>
             </ul>

@@ -193,13 +193,13 @@
                         <div class="sidebar-item categories">
                             <h3 class="sidebar-title">Categories</h3>
                             <ul class="mt-3">
-                                <li><a href="{{ route('all_news') }}">News &nbsp;<small><span class="badge badge-danger text-light">{{ $news->total() }}</span></small></a></li>
-                                <li><a href="{{ route('all_interruptions') }}">Interruptions &nbsp;<small><span class="badge badge-danger text-light">{{ $interruptions->total() }}</span></small></a></li>
-                                <li><a href="{{ route('all_advisories') }}">Advisories &nbsp;<small><span class="badge badge-danger text-light">{{ $advisories->total() }}</span></small></a></li>
+                                <li><a href="{{ route('all_news') }}">ALl News &nbsp;<small><span class="badge badge-danger text-light">{{ $news->total() }}</span></small></a></li>
+                                <li><a href="{{ route('all_interruptions') }}">All Interruptions &nbsp;<small><span class="badge badge-danger text-light">{{ $interruptions->total() }}</span></small></a></li>
+                                <li><a href="{{ route('all_advisories') }}">All Advisories &nbsp;<small><span class="badge badge-danger text-light">{{ $advisories->total() }}</span></small></a></li>
                             </ul>
                         </div>
                         <div class="sidebar-item recent-posts">
-                            <h3 class="sidebar-title">Recent News</h3>
+                            <h3 class="sidebar-title">Related Topics</h3>
                             
                             <div class="mt-3">
                                 @if($recentNews->count() > 0)
