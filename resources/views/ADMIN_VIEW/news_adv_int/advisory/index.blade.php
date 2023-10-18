@@ -45,6 +45,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(count($advisories) > 0)
                                     @foreach ($advisories as $adv)
                                         <tr>
                                             <td>{{ $adv->place }}</td>
@@ -69,6 +70,11 @@
                                         </tr>
                                         @include('ADMIN_VIEW.news_adv_int.advisory.edit')
                                     @endforeach
+                                    @else
+                                        <div class="col-md-12 text-center">
+                                            <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
+                                        </div>
+                                    @endif
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">

@@ -45,26 +45,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($interruptions as $int)
-                                    <tr>
-                                        <td>{{ $int->what }}</td>
-                                        <td>{{ $int->where }}</td>
-                                        <td>{{ $int->why }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($int->startDateTime)->format('M. d h:i A') }} to {{ \Carbon\Carbon::parse($int->endDateTime)->addDay()->format('M. d, Y h:i A') }}</td>
-                                        
-                                        <td>
-                                            <a href="#" data-toggle="modal" data-target="#edit{{$int->id}}">
-                                                <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>
-                                            </a>   
-                                            <form id="delete-form-{{ $int->id }}" action="{{ route('interruptions.destroy', $int->id) }}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button onclick="deleteData({{ $int->id }})" type="button" data-placement="bottom" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @include('ADMIN_VIEW.news_adv_int.interruption.edit')
-                                    @endforeach
+                                    @if(count($interruptions) > 0)
+                                        @foreach ($interruptions as $int)
+                                        <tr>
+                                            <td>{{ $int->what }}</td>
+                                            <td>{{ $int->where }}</td>
+                                            <td>{{ $int->why }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($int->startDateTime)->format('M. d h:i A') }} to {{ \Carbon\Carbon::parse($int->endDateTime)->addDay()->format('M. d, Y h:i A') }}</td>
+                                            
+                                            <td>
+                                                <a href="#" data-toggle="modal" data-target="#edit{{$int->id}}">
+                                                    <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>
+                                                </a>   
+                                                <form id="delete-form-{{ $int->id }}" action="{{ route('interruptions.destroy', $int->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button onclick="deleteData({{ $int->id }})" type="button" data-placement="bottom" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @include('ADMIN_VIEW.news_adv_int.interruption.edit')
+                                        @endforeach
+                                        @else
+                                        <div class="col-md-12 text-center">
+                                            <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
+                                        </div>
+                                    @endif
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">

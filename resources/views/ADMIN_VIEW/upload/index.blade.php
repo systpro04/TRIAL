@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-@include('upload.create')
+@include('ADMIN_VIEW.upload.create')
 <div class="content">
     <div class="content-header">
         <div class="container-fluid">
@@ -44,6 +44,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(count($uploads) > 0)
                                     @foreach ($uploads as $upload )
                                     <tr>
                                         <td><video style=" height: 60px; width: 100px;" class="text-center" controls> <source src="{{ URL::asset('uploads/videos/' . $upload->file) }}" style=" height: 60px; width: 100px;" type="video/mp4"></td>
@@ -59,8 +60,14 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    @include('upload.edit')
+                                    @include('ADMIN_VIEW.upload.edit')
                                    @endforeach
+                                   @else
+                                        <div class="col-md-12 text-center">
+                                            <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
+                                        </div>
+                                    @endif
+                                   
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">

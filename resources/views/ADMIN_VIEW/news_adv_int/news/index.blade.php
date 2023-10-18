@@ -45,6 +45,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(count($news) > 0)
                                     @foreach ($news as $new)
                                         <tr>
                                             <td>
@@ -78,6 +79,11 @@
                                         </tr>
                                     @include('ADMIN_VIEW.news_adv_int.news.edit')
                                     @endforeach
+                                    @else
+                                        <div class="col-md-12 text-center">
+                                            <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
+                                        </div>
+                                    @endif
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">
