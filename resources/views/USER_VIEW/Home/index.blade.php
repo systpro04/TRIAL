@@ -24,10 +24,10 @@
                     @endif
                 @endforeach
             @endforeach
-            <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev"><span
-                    class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span></a>
-            <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next"><span
-                    class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span></a>
+            <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span></a>
+            <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span></a>
         </div>
     </section>
 
@@ -157,13 +157,12 @@
                 @include('USER_VIEW.Home.view')
                 <div class="col-lg-8">
                     <article class="blog-details">
-                        <div class="post-img">
-                            @foreach (json_decode($new->image, true) as $index => $img)
-                            <div class="carousel-item @if ($index == 0) active @endif">
-                                <img src="{{ url('uploads/news/' . $img) }}" class="img-fluid">
+                            <div id="hero-carousel" class="post-img carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                                @foreach (json_decode($new->image, true) as $index => $img)
+                                    <img class="carousel-item @if ($index == 0) active @endif" src="{{ url('uploads/news/' . $img) }}" class="img-fluid">
+                                @endforeach
                             </div>
-                            @endforeach
-                        </div>
+                        
                         <h2 class="title">{{ $new->title }}</h2>
                         <div class="meta-top">
                             <ul>
@@ -192,21 +191,15 @@
                             </form>
                         </div>
                         <div class="sidebar-item categories">
-                            <h3 class="sidebar-title navbar">Categories</h3>
+                            <h3 class="sidebar-title">Categories</h3>
                             <ul class="mt-3">
-                                <li><a href="#">News &nbsp;<small><span class="badge badge-danger text-light">{{ $news->count() }}</span></small></a></li>
-                                <li><a href="#">Interruptions &nbsp;<small><span class="badge badge-danger text-light">{{ $interruptions->count() }}</span></small></a></li>
-                                <li><a href="#">Advisories &nbsp;<small><span class="badge badge-danger text-light">{{ $advisories->count() }}</span></small></a></li>
+                                <li><a href="{{ route('all_news') }}">News &nbsp;<small><span class="badge badge-danger text-light">{{ $news->total() }}</span></small></a></li>
+                                <li><a href="{{ route('all_interruptions') }}">Interruptions &nbsp;<small><span class="badge badge-danger text-light">{{ $interruptions->total() }}</span></small></a></li>
+                                <li><a href="{{ route('all_advisories') }}">Advisories &nbsp;<small><span class="badge badge-danger text-light">{{ $advisories->total() }}</span></small></a></li>
                             </ul>
                         </div>
                         <div class="sidebar-item recent-posts">
-                            <h3 class="navbar" >
-                                <li class="dropdown" style="list-style-type: none;"><a href="#" ><span class="sidebar-title">Recent News</span><i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                                    <ul>
-                                        <li><a href="{{ route('all_news') }}" class="{{ request()->is('allnews*') ? 'active' : '' }}">All News</a></li>
-                                    </ul>
-                                </li>
-                            </h3>
+                            <h3 class="sidebar-title">Recent News</h3>
                             
                             <div class="mt-3">
                                 @if($recentNews->count() > 0)
@@ -290,6 +283,14 @@
         </div>
     </section> --}}
     <style>
+
+        ul li a:hover {
+            font-weight: bold;
+            text-decoration: none;
+            color: teal !important;;
+        }
+
+
         .badge {
             display: inline-block;
             padding: .25em .3em;

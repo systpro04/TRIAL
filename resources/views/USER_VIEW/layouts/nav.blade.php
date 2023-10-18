@@ -21,7 +21,6 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
         <a href="#" class="logo d-flex align-items-center">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
             <img src="{{ asset('images/users/flames.png') }}" alt="">
             <h1>Trial and Error<span>.</span></h1>
         </a>
