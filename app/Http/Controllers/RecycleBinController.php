@@ -13,6 +13,25 @@ use App\Models\User;
 
 class RecycleBinController extends Controller
 {
+    // public function index()
+    // {
+    //     $deletedData = collect();
+
+    //     $deleteduploads = $deletedData->concat(Upload::onlyTrashed()->get());
+    //     $deletednews = $deletedData->concat(News::onlyTrashed()->get());
+    //     $deletedadv = $deletedData->concat(Advisory::onlyTrashed()->get());
+    //     $deletedint = $deletedData->concat(Interruption::onlyTrashed()->get());
+    //     $deleteduser = $deletedData->concat(User::onlyTrashed()->get());
+    //     $deletedlink = $deletedData->concat(Link::onlyTrashed()->get());
+
+    //     return view('ADMIN_VIEW.Recycle_Bin', compact(
+    //         'deleteduploads',
+    //         'deletednews',
+    //         'deletedadv',
+    //         'deletedint',
+    //         'deletedlink'
+    //     ));
+    // }
     public function index()
     {
         $deleteduploads = Upload::onlyTrashed()->get();
@@ -22,13 +41,15 @@ class RecycleBinController extends Controller
         $deleteduser = User::onlyTrashed()->get();
         $deletedlink = Link::onlyTrashed()->get();
 
-        return view('ADMIN_VIEW.Recycle_Bin', compact(
-            'deleteduploads',
-            'deletednews',
-            'deletedadv',
-            'deletedint',
-            'deletedlink'
-        ));
+        // Merge all the collections into one $deletedData collection
+        $deletedData = $deleteduploads
+            ->concat($deletednews)
+            ->concat($deletedadv)
+            ->concat($deletedint)
+            ->concat($deleteduser)
+            ->concat($deletedlink);
+
+        return view('ADMIN_VIEW.Recycle_Bin', compact('deletedData'));
     }
 
     public function restoreRecord($table, $id)
@@ -38,17 +59,17 @@ class RecycleBinController extends Controller
             case 'news':
                 $record = News::withTrashed()->find($id);
                 break;
-            case 'adv':
+            case 'advisories':
                 $record = Advisory::withTrashed()->find($id);
                 break;
-            case 'int':
+            case 'interruptions':
                 $record = Interruption::withTrashed()->find($id);
                 break;
-            case 'upload':
+            case 'uploads':
                 $record = Upload::withTrashed()->find($id);
                 break;
-            case 'user':
-                $record = User::withTrashed()->find($id);
+            case 'links':
+                $record = Link::withTrashed()->find($id);
                 break;
             default:
                 break;
@@ -69,17 +90,17 @@ class RecycleBinController extends Controller
             case 'news':
                 $record = News::withTrashed()->find($id);
                 break;
-            case 'adv':
+            case 'advisories':
                 $record = Advisory::withTrashed()->find($id);
                 break;
-            case 'int':
+            case 'interruptions':
                 $record = Interruption::withTrashed()->find($id);
                 break;
-            case 'upload':
+            case 'uploads':
                 $record = Upload::withTrashed()->find($id);
                 break;
-            case 'user':
-                $record = User::withTrashed()->find($id);
+            case 'links':
+                $record = Link::withTrashed()->find($id);
                 break;
             default:
                 break;

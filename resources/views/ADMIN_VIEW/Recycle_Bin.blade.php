@@ -41,7 +41,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                {{-- <tbody>
                                     @if ($deletednews->isEmpty() && $deletedint->isEmpty() && $deletedadv->isEmpty())
                                         <td colspan="12" style="color: red; font-size: 1rem; text-transform:uppercase">Recycle bin is empty.</td>
                                     @else
@@ -102,8 +102,104 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                </tbody>
+                                    @foreach ($deleteduploads as $upload)
+                                    <tr>
+                                        <td>UPLOADS</td>
+                                        <td>{{ $upload->place }}</td>
+                                        <td>{{ $upload->deleted_at }}</td>
+                                        <td>
+                                            <form id="restore-form-{{ $upload->id }}" action="{{ route('restore-record', ['table' => 'upload', 'id' => $upload->id]) }}" method="post" style="display: inline;">
+                                                @csrf
+                                                @method('put')
+                                                <button onclick="restoreData({{ $upload->id }})" type="button" data-placement="bottom" class="btn btn-sm btn-warning"><i class="fas fa-recycle"></i></button>
+                                            </form>
+                                            <form  id="delete-form-{{ $upload->id }}" action="{{ route('permanent-delete-record', ['table' => 'upload', 'id' => $upload->id]) }}" method="post" style="display: inline;">
+                                                @csrf
+                                                @method('delete')
+                                                <button onclick="deleteData({{ $upload->id }})" type="button" data-placement="bottom" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                    @foreach ($deletedadv as $adv)
+                                    <tr>
+                                        <td>ADVISORY</td>
+                                        <td>{{ $adv->place }}</td>
+                                        <td>{{ $adv->deleted_at }}</td>
+                                        <td>
+                                            <form id="restore-form-{{ $adv->id }}" action="{{ route('restore-record', ['table' => 'adv', 'id' => $adv->id]) }}" method="post" style="display: inline;">
+                                                @csrf
+                                                @method('put')
+                                                <button onclick="restoreData({{ $adv->id }})" type="button" data-placement="bottom" class="btn btn-sm btn-warning"><i class="fas fa-recycle"></i></button>
+                                            </form>
+                                            <form  id="delete-form-{{ $adv->id }}" action="{{ route('permanent-delete-record', ['table' => 'adv', 'id' => $adv->id]) }}" method="post" style="display: inline;">
+                                                @csrf
+                                                @method('delete')
+                                                <button onclick="deleteData({{ $adv->id }})" type="button" data-placement="bottom" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @foreach ($deletedlink as $link)
+                                    <tr>
+                                        <td>LINKS</td>
+                                        <td>{{ $link->place }}</td>
+                                        <td>{{ $link->deleted_at }}</td>
+                                        <td>
+                                            <form id="restore-form-{{ $link->id }}" action="{{ route('restore-record', ['table' => 'link', 'id' => $link->id]) }}" method="post" style="display: inline;">
+                                                @csrf
+                                                @method('put')
+                                                <button onclick="restoreData({{ $link->id }})" type="button" data-placement="bottom" class="btn btn-sm btn-warning"><i class="fas fa-recycle"></i></button>
+                                            </form>
+                                            <form  id="delete-form-{{ $link->id }}" action="{{ route('permanent-delete-record', ['table' => 'link', 'id' => $link->id]) }}" method="post" style="display: inline;">
+                                                @csrf
+                                                @method('delete')
+                                                <button onclick="deleteData({{ $link->id }})" type="button" data-placement="bottom" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody> --}}
+                                <tbody>
+                                    @if ($deletedData->isEmpty())
+                                    <tr>
+                                        <td colspan="12" style="color: red; font-size: 1rem; text-transform: uppercase">Recycle bin is empty.</td>
+                                    </tr>
+                                @else
+                                    @foreach ($deletedData as $record)
+                                        <tr>
+                                            <td>{{ $record->getTable() }}</td>
+                                            <td>
+                                                @if ($record->getTable() === 'news' && isset($record->title))
+                                                    {{ $record->title }}
+                                                @elseif ($record->getTable() === 'interruptions' && isset($record->what))
+                                                    {{ $record->what }}
+                                                @elseif ($record->getTable() === 'advisories' && isset($record->place))
+                                                    {{ $record->place }}
+                                                @elseif ($record->getTable() === 'uploads' && isset($record->title))
+                                                    {{ $record->title }}
+                                                @elseif ($record->getTable() === 'links' && isset($record->title))
+                                                    {{ $record->title }}
+                                                @endif
+                                            </td>
+                                            <td>{{ $record->deleted_at }}</td>
+                                            <td>
+                                                <form id="restore-form-{{ $record->id }}" action="{{ route('restore-record', ['table' => $record->getTable(), 'id' => $record->id]) }}" method="post" style="display: inline;">
+                                                    @csrf
+                                                    @method('put')
+                                                    <button onclick="restoreData({{ $record->id }})" type="button" data-placement="bottom" class="btn btn-sm btn-warning"><i class="fas fa-recycle"></i></button>
+                                                </form>
+                                                <form id="delete-form-{{ $record->id }}" action="{{ route('permanent-delete-record', ['table' => $record->getTable(), 'id' => $record->id]) }}" method="post" style="display: inline;">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button onclick="deleteData({{ $record->id }})" type="button" data-placement="bottom" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endif
+                                </tbody>
                             </table>
                             
                             {{-- <div class="d-flex justify-content-end">
