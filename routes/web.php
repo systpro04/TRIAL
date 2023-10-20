@@ -50,6 +50,9 @@ Route::group(['middleware' => ['role:Super-Admin|Admin']], function () {
     Route::get('searchData', [InquiryController::class, 'search'])->name('search');
 
     Route::get('/recycle-bin', [RecycleBinController::class, 'index'])->name('recyclebin');
+    Route::put('/restore-record/{table}/{id}', [RecycleBinController::class, 'restoreRecord'])->name('restore-record');
+    Route::delete('/permanent-delete-record/{table}/{id}', [RecycleBinController::class, 'permanentDeleteRecord'])->name('permanent-delete-record');
+
 });
 
 //USER_ROUTES

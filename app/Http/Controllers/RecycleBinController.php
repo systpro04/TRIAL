@@ -20,7 +20,6 @@ class RecycleBinController extends Controller
         $deletedadv = Advisory::onlyTrashed()->get();
         $deletedint = Interruption::onlyTrashed()->get();
         $deleteduser = User::onlyTrashed()->get();
-        $deletedimages = HomeImages::onlyTrashed()->get();
         $deletedlink = Link::onlyTrashed()->get();
 
         return view('ADMIN_VIEW.Recycle_Bin', compact(
@@ -28,8 +27,68 @@ class RecycleBinController extends Controller
             'deletednews',
             'deletedadv',
             'deletedint',
-            'deletedimages',
             'deletedlink'
         ));
+    }
+
+    public function restoreRecord($table, $id)
+    {
+        $record = null;
+        switch ($table) {
+            case 'news':
+                $record = News::withTrashed()->find($id);
+                break;
+            case 'adv':
+                $record = Advisory::withTrashed()->find($id);
+                break;
+            case 'int':
+                $record = Interruption::withTrashed()->find($id);
+                break;
+            case 'upload':
+                $record = Upload::withTrashed()->find($id);
+                break;
+            case 'user':
+                $record = User::withTrashed()->find($id);
+                break;
+            default:
+                break;
+        }
+
+        if ($record) {
+            $record->restore();
+        }
+
+        toastr()->success('Data Restored Successfully', 'Success', ['iconClass' => 'toast-success']);
+        return redirect()->back();
+    }
+
+    public function permanentDeleteRecord($table, $id)
+    {
+        $record = null;
+        switch ($table) {
+            case 'news':
+                $record = News::withTrashed()->find($id);
+                break;
+            case 'adv':
+                $record = Advisory::withTrashed()->find($id);
+                break;
+            case 'int':
+                $record = Interruption::withTrashed()->find($id);
+                break;
+            case 'upload':
+                $record = Upload::withTrashed()->find($id);
+                break;
+            case 'user':
+                $record = User::withTrashed()->find($id);
+                break;
+            default:
+                break;
+        }
+
+        if ($record) {
+            $record->forceDelete();
+        }
+        toastr()->success('Data Permanently Deleted', 'Success', ['iconClass' => 'toast-success']);
+        return redirect()->back();
     }
 }
