@@ -19,6 +19,7 @@ class CreateAdvisoriesTable extends Migration
             $table->string('info',5000);
             $table->string('dateTime');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

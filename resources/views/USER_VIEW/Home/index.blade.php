@@ -227,70 +227,7 @@
             </div>
         </div>
     </section>
-    {{-- <section id="recent-blog-posts" class="recent-blog-posts">
-        <div class="container" data-aos="fade-up">
-            <section id="recent-blog-posts" class="recent-blog-posts">
-                <div class="container" data-aos="fade-up">
-                    <div class=" section-header">
-                        <h2>Recent News</h2>
-                        <p>Be informative and read our latest news</p>
-                    </div>
-                    <div class="row gy-5">
-                        @if (count($news) > 0)
-                            @foreach ($news as $new)
-                                @include('USER_VIEW.Home.view')
-                                <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="post-item position-relative h-100">
-                                        <div class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner">
-                                                @foreach (json_decode($new->image, true) as $index => $img)
-                                                    <div
-                                                        class="carousel-item @if ($index == 0) active @endif">
-                                                        <figure>
-                                                            <img src="{{ url('uploads/news/' . $img) }}"
-                                                                style="height: 200px; width: 100%"
-                                                                class="img-fluid rounded">
-                                                        </figure>
-                                                    </div>
-                                                @endforeach
-                                                <span
-                                                    class="post-date">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i A', $new->dateTime)->format('M. d, Y h:i A') }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-content d-flex flex-column">
-                                            <h3 class="post-title" style="align-items: center">{{ $new->title }}</h3>
-                                            <hr>
-                                            <a href="#" class="readmore stretched-link" data-bs-toggle="modal"
-                                                data-bs-target="#newsView-{{ $new->id }}"><span><i
-                                                        class="fa fa-share"></i> Read More</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @else
-                            <div class="col-md-12 text-center">
-                                <p
-                                    style="animation: bounce 1.5s infinite; color: red; font-size: 1.5rem; text-transform:uppercase">
-                                    No news yet..</p>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center mt-4">
-                    {{ $news->links() }}
-                </div>
-            </section>
-        </div>
-    </section> --}}
     <style>
-
-        ul li a:hover {
-            font-weight: bold;
-            text-decoration: none;
-            color: teal !important;;
-        }
-
-
         .badge {
             display: inline-block;
             padding: .25em .3em;

@@ -42,5 +42,12 @@
     <script src="{{ asset('userside/assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="{{ asset('userside/assets/js/main.js') }}"></script>
 </body>
+<style>
+  ul li a:hover {
+            font-weight: bold;
+            text-decoration: none;
+            color: teal !important;;
+        }
+</style>
 
 </html>

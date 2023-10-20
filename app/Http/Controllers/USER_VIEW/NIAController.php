@@ -11,18 +11,19 @@ class NIAController extends Controller
 {
     public function allnews() 
     {
-        $news = News::orderBy('created_at', 'desc')->paginate(10);
-        return view('USER_VIEW.NIA.allnews', compact('news'));
+        $news = News::latest()->paginate(5);
+        $n = News::latest()->paginate(10);
+        return view('USER_VIEW.NIA.allnews', compact('news', 'n'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function allint() 
     {
-        $interruptions = Interruption::orderBy('created_at', 'desc')->paginate(10);
-        return view('USER_VIEW.NIA.allint', compact('interruptions'));
+        $interruptions = Interruption::latest()->paginate(10);
+        return view('USER_VIEW.NIA.allint', compact('interruptions'))->with('i', (request()->input('page', 1) - 1) *10);
     }
     public function alladv() 
     {
-        $advisories = Advisory::orderBy('created_at', 'desc')->paginate(10);
-        return view('USER_VIEW.NIA.alladv', compact('advisories'));
+        $advisories = Advisory::latest()->paginate(10);
+        return view('USER_VIEW.NIA.alladv', compact('advisories'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 }

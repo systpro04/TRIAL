@@ -19,6 +19,7 @@ class CreateLinksTable extends Migration
             $table->longText('link')->nullable();
             $table->string('dateTime')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

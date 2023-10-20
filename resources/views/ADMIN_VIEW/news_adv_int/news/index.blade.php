@@ -87,7 +87,7 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">
-                                {{ $news->links() }}
+                                {!! $news->links() !!}
                             </div>
                         </div>
                     </div>

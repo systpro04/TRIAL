@@ -65,9 +65,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-file-pdf text-warning"></i>
-                <p>Covert PDF</p>
+            <a href="{{ route('recyclebin') }}" class="nav-link {{ request()->is('recycle-bin*') ? 'bg-secondary active' : '' }}">
+                <i class="nav-icon fas fa-recycle text-warning"></i>
+                <p>Recycle Bin</p>
             </a>
         </li>
     </ul>

@@ -17,6 +17,7 @@ class CreateHomeImagesTable extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

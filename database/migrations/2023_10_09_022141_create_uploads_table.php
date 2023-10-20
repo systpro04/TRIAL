@@ -18,6 +18,7 @@ class CreateUploadsTable extends Migration
             $table->longText('title')->nullable();
             $table->longText('file')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

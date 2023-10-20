@@ -74,7 +74,7 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">
-                                {{ $interruptions->links() }}
+                                {!! $interruptions->links() !!}
                             </div>
                         </div>
                     </div>

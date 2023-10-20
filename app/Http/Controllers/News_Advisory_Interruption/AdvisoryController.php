@@ -13,7 +13,7 @@ class AdvisoryController extends Controller
     public function index(Request $request)
     {
         $advisories = Advisory::orderBy('created_at', 'desc')->paginate(5);
-        return view('ADMIN_VIEW.news_adv_int.advisory.index', compact('advisories'));
+        return view('ADMIN_VIEW.news_adv_int.advisory.index', compact('advisories'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

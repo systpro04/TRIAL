@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\News_Advisory_Interruption\HomeController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\RecycleBinController;
 use App\Http\Controllers\News_Advisory_Interruption\AdvisoryController;
 use App\Http\Controllers\News_Advisory_Interruption\InterruptionController;
 use App\Http\Controllers\News_Advisory_Interruption\NewsController;
@@ -47,6 +48,8 @@ Route::group(['middleware' => ['role:Super-Admin|Admin']], function () {
 
     Route::get('search', [InquiryController::class, 'index'])->name('index');
     Route::get('searchData', [InquiryController::class, 'search'])->name('search');
+
+    Route::get('/recycle-bin', [RecycleBinController::class, 'index'])->name('recyclebin');
 });
 
 //USER_ROUTES

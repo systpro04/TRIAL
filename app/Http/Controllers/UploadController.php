@@ -11,7 +11,7 @@ class UploadController extends Controller
     public function index()
     {
         $uploads = Upload::orderBy('created_at', 'desc')->paginate(5);
-        return view('ADMIN_VIEW.upload.index', compact('uploads'));
+        return view('ADMIN_VIEW.upload.index', compact('uploads'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function store(Request $request)

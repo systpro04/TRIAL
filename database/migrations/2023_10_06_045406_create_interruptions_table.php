@@ -20,6 +20,7 @@ class CreateInterruptionsTable extends Migration
             $table->string('where');
             $table->string('why');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

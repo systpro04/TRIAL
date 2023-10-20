@@ -50,7 +50,7 @@
                                         <tr>
                                             <td>{{ $adv->place }}</td>
                                             <td>{{ $adv->info }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($int->startDateTime)->format('M. d h:i A') }} to {{ \Carbon\Carbon::parse($int->endDateTime)->addDay()->format('M. d, Y h:i A') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($adv->startDateTime)->format('M. d h:i A') }} to {{ \Carbon\Carbon::parse($adv->endDateTime)->addDay()->format('M. d, Y h:i A') }}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#edit{{ $adv->id }}">
                                                     <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>
@@ -78,7 +78,7 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">
-                                {{ $advisories->links() }}
+                                {!! $advisories->links() !!}
                             </div>
                         </div>
                     </div>
