@@ -47,7 +47,7 @@
                                     name="image[]" multiple>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary mt-2">Submit</button>
+                        <button type="submit" class="btn btn-sm btn-primary mt-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Save">Submit</button>
                     </div>
                 </form>
             </div>
@@ -63,7 +63,7 @@
             altInput: true,
             enableTime: true,
             endDate: moment().startOf("hour").add(12, "hour"),
-            dateFormat: "Y-m-d H:i K",
+            dateFormat: "Y-m-d h:i K",
             weekNumbers: true
         });
 

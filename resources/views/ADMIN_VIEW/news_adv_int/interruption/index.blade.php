@@ -28,7 +28,8 @@
                                 <h4 class="card-title">Interruptions Information List</h4>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#create"><i class="fas fa-plus-circle"></i></a>
+                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#create" data-bs-toggle="tooltip" data-bs-placement="top" title="Create"><i class="fas fa-plus-circle"></i></a>
+                                <a href="{{ route('recyclebin') }}" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Recycle"><i class="fas fa-recycle"></i></a>
                             </div>
                         </div>
                     </div>
@@ -51,16 +52,20 @@
                                             <td>{{ $int->what }}</td>
                                             <td>{{ $int->where }}</td>
                                             <td>{{ $int->why }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($int->startDateTime)->format('M. d h:i A') }} to {{ \Carbon\Carbon::parse($int->endDateTime)->addDay()->format('M. d, Y h:i A') }}</td>
-                                            
+                                            @php
+                                                $dateRange = explode(" to ", $int->dateTime);
+                                                $startDate = date("F, j, Y g:i A", strtotime($dateRange[0]));
+                                                $endDate = date("F, j, Y g:i A", strtotime($dateRange[1]));
+                                            @endphp
+                                            <td>{{ $startDate }} to {{ $endDate }}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#edit{{$int->id}}">
-                                                    <button class="btn btn-success btn-sm" type="button"><i class="fas fa-pen"></i></button>
+                                                    <button class="btn btn-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fas fa-pen"></i></button>
                                                 </a>   
                                                 <form id="delete-form-{{ $int->id }}" action="{{ route('interruptions.destroy', $int->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button onclick="deleteData({{ $int->id }})" type="button" data-placement="bottom" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                    <button onclick="deleteData({{ $int->id }})" type="button" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -57,10 +57,15 @@
                 enableTime: true,
                 startDate: moment().startOf("hour"),
                 endDate: moment().startOf("hour").add(12, "hour"),
-                dateFormat: "Y-m-d H:i K",
+                dateFormat: "Y-m-d h:i K",
                 mode: "range",
                 weekNumbers: true
             });
+
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
         });
     </script>
 </body>

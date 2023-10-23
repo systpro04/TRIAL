@@ -28,7 +28,8 @@
                                 <h4 class="card-title">News Information List</h4>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal"  data-target="#create"><i class="fas fa-plus-circle"></i></a>
+                                <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#create" data-bs-toggle="tooltip" data-bs-placement="top" title="Create"><i class="fas fa-plus-circle"></i></a>
+                                <a href="{{ route('recyclebin') }}" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Recycle"><i class="fas fa-recycle"></i></a>
                             </div>
                         </div>
                     </div>
@@ -68,12 +69,12 @@
                                             <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i A', $new->dateTime)->format('M. d, Y h:i A') }}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#edit{{$new->id}}">
-                                                    <button class="btn btn-sm btn-success" type="button"><i class="fas fa-pen"></i></button>
+                                                    <button class="btn btn-sm btn-success" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fas fa-pen"></i></button>
                                                 </a>                                                
                                                 <form id="delete-form-{{ $new->id }}" action="{{ route('news.destroy', $new->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" data-placement="bottom" onclick="deleteData({{ $new->id }})" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                                    <button type="button" onclick="deleteData({{ $new->id }})" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

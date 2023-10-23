@@ -50,7 +50,7 @@
                                 <textarea class="form-control @error('why') is-invalid @enderror" rows="3" name="why"></textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Save">Submit</button>
                     </div>
                 </form>
             </div>

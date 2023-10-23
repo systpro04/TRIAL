@@ -44,7 +44,7 @@
                                 <small>Leave blank if you don't want to change image.</small>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary mt-2">Submit</button>
+                        <button type="submit" class="btn btn-sm btn-primary mt-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Save">Submit</button>
                     </div>
                 </form>
             </div>
@@ -61,7 +61,7 @@
             enableTime: true,
             startDate: moment().startOf("hour"),
             endDate: moment().startOf("hour").add(12, "hour"),
-            dateFormat: "Y-m-d H:i K",
+            dateFormat: "Y-m-d h:i K",
             weekNumbers: true
         });
     });

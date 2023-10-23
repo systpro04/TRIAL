@@ -22,7 +22,12 @@
                             <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
                                 <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
                                     <div class="job-content">
-                                        <h5 class="text-center text-md-left">{{ \Carbon\Carbon::parse($int->startDateTime)->format('M. d h:i A') }} to {{ \Carbon\Carbon::parse($int->endDateTime)->addDay()->format('M. d, Y h:i A') }}</h5>
+                                        @php
+                                            $dateRange = explode(" to ", $int->dateTime);
+                                            $startDate = date("F, j, Y g:i A", strtotime($dateRange[0]));
+                                            $endDate = date("F, j, Y g:i A", strtotime($dateRange[1]));
+                                        @endphp
+                                        <h5 class="text-center text-md-left">From <strong>{{ $startDate }}</strong> to <strong>{{ $endDate }}</strong></h5>
                                         <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
                                             <li>
                                                 <i class="bi bi-check-circle" style="color: teal"></i> <strong>&nbsp;&nbsp;&nbsp;&nbsp;{{ $int->what }}</strong>

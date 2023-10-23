@@ -47,8 +47,13 @@
                                         <td>
                                                 <img src="{{ asset('userside/assets/img/kalindar.png') }}" alt="" style="height: 110px; width: 110px">
                                         </td>
+                                        @php
+                                            $dateRange = explode(" to ", $adv->dateTime);
+                                            $startDate = date("F, j, Y g:i A", strtotime($dateRange[0]));
+                                            $endDate = date("F, j, Y g:i A", strtotime($dateRange[1]));
+                                        @endphp
                                         <td>
-                                            <span><small>{{ \Carbon\Carbon::parse($adv->startDateTime)->format('M. d h:i A') }} to {{ \Carbon\Carbon::parse($adv->endDateTime)->addDay()->format('M. d, Y h:i A') }}</small></span>
+                                            <span><small>From <strong>{{ $startDate }}</strong> to <strong>{{ $endDate }}</strong></small></span>
                                         </td>
                                         <td>
                                             <div class="r-no">
