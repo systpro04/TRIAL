@@ -10,7 +10,7 @@
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                         {{-- <a data-aos="fade-up" data-aos-delay="200" href="{{ route('login') }}" class="btn-get-started">Get
                             Started</a> --}}
-                            <div class="search-wrapper" style="margin-top: 16%">
+                            <div class="search-wrapper" style="margin-top: 13%">
                                 <div class="input-holder">
                                     <input type="text" class="search-input" placeholder="Type to search" />
                                     <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
