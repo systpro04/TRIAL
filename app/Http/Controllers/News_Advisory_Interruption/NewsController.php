@@ -170,8 +170,7 @@ class NewsController extends Controller
       }
       $news->delete();
 
-      toastr()->success('Deleted Successfully', 'Success', ['iconClass' => 'toast-success']);
-      
+      toastr()->success('Deleted Successfully | Move to Recyclebin!!!', 'Success', ['iconClass' => 'toast-success']);
       return redirect()->back();
    }
 }

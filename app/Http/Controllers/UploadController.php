@@ -40,7 +40,6 @@ class UploadController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'file' => 'nullable|mimes:mp4,ogx,oga,ogv,ogg,webm'
 
@@ -68,17 +67,15 @@ class UploadController extends Controller
         return redirect()->route('upload.index');
 
     }
-
     public function destroy($id)
     {
-
         $uploads = Upload::find($id);
         $destination = 'uploads/videos/' . $uploads->file;
         if (File::exists($destination)) {
             File::delete($destination);
         }
         $uploads->delete();
-        toastr()->success('Deleted Successfully', 'Success', ['iconClass' => 'toast-success']);
+        toastr()->success('Deleted Successfully | Move to Recyclebin!!!', 'Success', ['iconClass' => 'toast-success']);
         // Alert::toast('Deleted Successfully', 'success')->autoClose(3000)->timerProgressBar()->width('20rem')->padding('1.5rem');
         return redirect()->back();
     }

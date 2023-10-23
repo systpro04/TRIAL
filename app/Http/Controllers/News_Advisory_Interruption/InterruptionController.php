@@ -114,7 +114,7 @@ class InterruptionController extends Controller
     {
         $interruption = Interruption::find($id);
         $interruption->delete();
-        toastr()->success('Deleted Successfully', 'Success', ['iconClass' => 'toast-success']);
+        toastr()->success('Deleted Successfully | Move to Recyclebin!!!', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->back();
     }
 
