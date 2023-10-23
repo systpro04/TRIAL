@@ -10,7 +10,7 @@ class UploadController extends Controller
 {
     public function index()
     {
-        $uploads = Upload::orderBy('created_at', 'desc')->paginate(5);
+        $uploads = Upload::latest()->paginate(5);
         return view('ADMIN_VIEW.upload.index', compact('uploads'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -36,7 +36,6 @@ class UploadController extends Controller
         toastr()->success('Video Uploaded Successfully');
         return redirect()->route('upload.index');
     }
-
 
     public function update(Request $request, $id)
     {

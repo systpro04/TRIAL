@@ -12,7 +12,7 @@ class InterruptionController extends Controller
 {
     public function index(Request $request)
     {
-        $interruptions = Interruption::orderBy('created_at', 'desc')->paginate(5);
+        $interruptions = Interruption::latest()->paginate(5);
 
         return view('ADMIN_VIEW.news_adv_int.interruption.index', compact('interruptions'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -22,11 +22,11 @@ class InterruptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        // $interruptions = Interruption::all();
-        // return view('interruptions.create',compact('interruptions'));
-    }
+    // public function create()
+    // {
+    //     // $interruptions = Interruption::all();
+    //     // return view('interruptions.create',compact('interruptions'));
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -60,10 +60,10 @@ class InterruptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    // public function show($id)
+    // {
 
-    }
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -71,12 +71,11 @@ class InterruptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        // $interruption = Interruption::find($id);
-
-        // return view('interruptions.edit',compact('interruption'));
-    }
+    // public function edit($id)
+    // {
+    //     // $interruption = Interruption::find($id);
+    //     // return view('interruptions.edit',compact('interruption'));
+    // }
 
     /**
      * Update the specified resource in storage.

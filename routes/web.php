@@ -66,3 +66,9 @@ Route::get('/history', [Other::class, 'history'])->name('history');
 Route::get('/allnews', [NIAController::class, 'allnews'])->name('all_news');
 Route::get('/allint', [NIAController::class, 'allint'])->name('all_interruptions');
 Route::get('/alladv', [NIAController::class, 'alladv'])->name('all_advisories');
+
+
+// Route::group(['middleware' => ['role:User']], function () {
+//     Route::get('search', [InquiryController::class, 'index'])->name('index');
+//     Route::get('searchData', [InquiryController::class, 'search'])->name('search');
+// });

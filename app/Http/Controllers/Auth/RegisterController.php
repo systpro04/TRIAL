@@ -78,6 +78,6 @@ class RegisterController extends Controller
     {
         // toastr()->success('Register Successfully', 'Welcome, ' . $user->name);
         toastr()->success('Register Successfully', 'Welcome back, ' . $user->name, ['iconClass' => 'toast-success']);
-        return redirect()->intended($this->redirectPath())->with('registered', true);
+        return redirect()->route('/');
     }
 }

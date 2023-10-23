@@ -45,7 +45,7 @@
                                             </div>
                                         </th>
                                         <td>
-                                                <img src="{{ asset('userside/assets/img/kalindar.png') }}" alt="" style="height: 110px; width: 110px">
+                                            <img src="{{ asset('userside/assets/img/kalindar.png') }}" alt="" style="height: 110px; width: 110px">
                                         </td>
                                         @php
                                             $dateRange = explode(" to ", $adv->dateTime);

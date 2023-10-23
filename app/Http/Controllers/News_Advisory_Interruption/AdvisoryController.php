@@ -12,7 +12,7 @@ class AdvisoryController extends Controller
 {
     public function index(Request $request)
     {
-        $advisories = Advisory::orderBy('created_at', 'desc')->paginate(5);
+        $advisories = Advisory::latest()->paginate(5);
         return view('ADMIN_VIEW.news_adv_int.advisory.index', compact('advisories'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -21,11 +21,11 @@ class AdvisoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        // $advisories = Advisory::all();
-        // return view('advisory.create',compact('advisories'));
-    }
+    // public function create()
+    // {
+    //     // $advisories = Advisory::all();
+    //     // return view('advisory.create',compact('advisories'));
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -56,10 +56,10 @@ class AdvisoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.

@@ -46,9 +46,24 @@
                         <li><a href="{{ route('leaders') }}" class="{{ request()->is('leaders*') ? 'active' : '' }}">Leaders</a></li>
                     </ul>
                 </li>
+                {{-- <li class="dropdown"><a href="#"><span><i class="fas fa-power-off"></i></span><i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
+                        @guest
+                            @if (Route::has('login'))
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                            @endif
+                        @else
+                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        @endguest
+                    </ul>
+                </li> --}}
             </ul>
-        </nav><!-- .navbar -->
-
+        </nav>
     </div>
 </header>
 

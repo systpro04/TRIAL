@@ -15,7 +15,7 @@ class NewsController extends Controller
 {
    public function index(Request $request)
    {
-      $news = News::orderBy('created_at', 'desc')->paginate(3);
+      $news = News::latest()->paginate(3);
       return view('ADMIN_VIEW.news_adv_int.news.index', compact('news'))->with('i', (request()->input('page', 1) - 1) * 3);
    }
 
@@ -24,10 +24,10 @@ class NewsController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-   public function create()
-   {
-      // 
-   }
+   // public function create()
+   // {
+   //    // 
+   // }
 
    /**
     * Store a newly created resource in storage.
@@ -77,12 +77,12 @@ class NewsController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-   public function show($id)
-   {
-      // $news = News::find($id);
-      // $images = Storage::files('/uploads/news');
-      // return view('news.view', compact('news','images'));
-   }
+   // public function show($id)
+   // {
+   //    // $news = News::find($id);
+   //    // $images = Storage::files('/uploads/news');
+   //    // return view('news.view', compact('news','images'));
+   // }
 
    /**
     * Show the form for editing the specified resource.
@@ -90,11 +90,11 @@ class NewsController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-   public function edit($id)
-   {
-      $news = News::find($id);
-      return view('news_adv_int.news.edit', compact('news'));
-   }
+   // public function edit($id)
+   // {
+   //    $news = News::find($id);
+   //    return view('news_adv_int.news.edit', compact('news'));
+   // }
 
    /**
     * Update the specified resource in storage.
