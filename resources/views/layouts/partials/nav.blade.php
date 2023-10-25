@@ -1,9 +1,9 @@
 
-<div style="background: teal;border-bottom: 3px solid goldenrod;">
+{{-- <div style="background: teal;border-bottom: 3px solid goldenrod;">
     <div class="container">
         <img src="{{ asset('images/users/flames.png') }}" style="height: 35px; width: 35px; border-radius: 50%;"> Trial and Error
     </div>
-</div>
+</div> --}}
 
 <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <ul class="navbar-nav">

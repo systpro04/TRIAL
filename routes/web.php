@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\News_Advisory_Interruption\HomeController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\RecycleBinController;
+// use App\Http\Controllers\ADMIN_VIEW\UserController;
 use App\Http\Controllers\News_Advisory_Interruption\AdvisoryController;
 use App\Http\Controllers\News_Advisory_Interruption\InterruptionController;
 use App\Http\Controllers\News_Advisory_Interruption\NewsController;
@@ -45,9 +46,10 @@ Route::group(['middleware' => ['role:Super-Admin|Admin']], function () {
     Route::resource('/interruptions', 'App\Http\Controllers\News_Advisory_Interruption\InterruptionController');
     Route::resource('/upload', 'App\Http\Controllers\UploadController');
     Route::resource('/link', 'App\Http\Controllers\LinkController');
+    Route::resource('/user', 'App\Http\Controllers\ADMIN_VIEW\UserController');
 
     Route::get('search', [InquiryController::class, 'index'])->name('index');
-    Route::get('searchData', [InquiryController::class, 'search'])->name('search');
+    
 
     Route::get('/recycle-bin', [RecycleBinController::class, 'index'])->name('recyclebin');
     Route::put('/restore-record/{table}/{id}', [RecycleBinController::class, 'restoreRecord'])->name('restore-record');
@@ -66,7 +68,7 @@ Route::get('/history', [Other::class, 'history'])->name('history');
 Route::get('/allnews', [NIAController::class, 'allnews'])->name('all_news');
 Route::get('/allint', [NIAController::class, 'allint'])->name('all_interruptions');
 Route::get('/alladv', [NIAController::class, 'alladv'])->name('all_advisories');
-
+Route::get('/searchData/{query}', [InquiryController::class, 'search'])->name('search');
 
 // Route::group(['middleware' => ['role:User']], function () {
 //     Route::get('search', [InquiryController::class, 'index'])->name('index');

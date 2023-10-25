@@ -52,12 +52,7 @@
                 <p>Upload Videos</p>
             </a>
         </li>
-        {{-- <li class="nav-item">
-            <a href="{{ route('link.index') }}" class="nav-link {{ request()->is('link*') ? 'bg-secondary active' : '' }}">
-                <i class="nav-icon fas fa-book-open text-warning"></i>
-                <p>Other Info | Link</p>
-            </a>
-        </li> --}}
+
         <li class="nav-item">
             <a href="{{ route('index') }}" class="nav-link {{ request()->is('search*') ? 'bg-secondary active' : '' }}">
                 <i class="nav-icon fas fa-file-alt text-warning"></i>
@@ -68,6 +63,12 @@
             <a href="{{ route('recyclebin') }}" class="nav-link {{ request()->is('recycle-bin*') ? 'bg-secondary active' : '' }}">
                 <i class="nav-icon fas fa-recycle text-warning"></i>
                 <p>Recycle Bin</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('user.index') }}" class="nav-link {{ request()->is('user*') ? 'bg-secondary active' : '' }}">
+                <i class="nav-icon fas fa-user-plus text-warning"></i>
+                <p>Users</p>
             </a>
         </li>
     </ul>

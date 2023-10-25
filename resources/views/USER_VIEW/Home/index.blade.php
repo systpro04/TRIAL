@@ -12,11 +12,11 @@
                             Started</a> --}}
                             <div class="search-wrapper" style="margin-top: 13%">
                                 <div class="input-holder">
-                                    <input type="text" class="search-input" placeholder="Type to search" />
+                                    <input type="text" class="search-input" placeholder="Balance Inquiry..." onkeyup="search()">
                                     <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
                                 </div>
                                 <span class="close" onclick="searchToggle(this, event);"></span>
-                            </div> 
+                            </div>
                     </div>
                     
                 </div>
@@ -26,8 +26,7 @@
             @foreach ($images as $index => $image)
                 @foreach (json_decode($image->image) as $filename)
                     @if (file_exists(public_path("uploads/home_images/$filename")))
-                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}"
-                            style="background-image: url('{{ asset("uploads/home_images/$filename") }}');"></div>
+                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-image: url('{{ asset("uploads/home_images/$filename") }}');"></div>
                     @endif
                 @endforeach
             @endforeach
@@ -105,12 +104,7 @@
                                                         <tr>
                                                             <th width="20%" class="text-muted">WHY</th>
                                                             <td width="80%">
-                                                                <button class="btn-block mb-1" type="button"
-                                                                    data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapseExample-{{ $int->id }}"
-                                                                    aria-bs-expanded="false"
-                                                                    aria-bs-controls="collapseExample"
-                                                                    style="border:none; "> <strong
+                                                                <button class="btn-block mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{ $int->id }}" aria-bs-expanded="false" aria-bs-controls="collapseExample" style="border:none; "> <strong
                                                                         class="text-dark"><small>see more...</small></strong></button>
                                                                 <div class="collapse"
                                                                     id="collapseExample-{{ $int->id }}">
@@ -233,6 +227,15 @@
         </div>
     </section>
     <style>
+        div.tooltip-inner {
+            text-align: center;
+            border-radius: 5px;
+            background-color: #ffee00;
+            color: #ffffffab;
+            font-size: 30px;
+            max-width: 350px;
+        }
+
         .badge {
             display: inline-block;
             padding: .25em .3em;
@@ -428,10 +431,8 @@
             }
             else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
                 container.removeClass('active');
-                // clear input
                 container.find('.search-input').val('');
             }
         } 
     </script>
-
 @endsection
