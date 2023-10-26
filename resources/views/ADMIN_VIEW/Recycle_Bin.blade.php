@@ -46,12 +46,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($deletedData->isEmpty())
+                                @if ($deleted->isEmpty())
                                     <tr>
                                         <td colspan="12" style="color: red; font-size: 1rem; text-transform: uppercase">Recycle bin is empty.</td>
                                     </tr>
                                 @else
-                                    @foreach ($deletedData as $record)
+                                    @foreach ($deleted as $record)
                                         <tr>
                                             <td>{{ $record->getTable() }}</td>
                                             <td>
@@ -85,9 +85,8 @@
                                 @endif
                                 </tbody>
                             </table>
-                            
                             {{-- <div class="d-flex justify-content-end">
-                                {!! $advisories->links() !!}
+                                {!! $deleted->links() !!}
                             </div> --}}
                         </div>
                     </div>

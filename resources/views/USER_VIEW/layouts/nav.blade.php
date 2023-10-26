@@ -16,7 +16,6 @@
         </nav>
     </div>
 </header> --}}
-
 <header id="header" class="header d-flex align-items-center teal-bg">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
@@ -65,8 +64,8 @@
             </ul>
         </nav>
     </div>
-</header>
 
+</header>
 <style>
 .header {
     position: fixed;
@@ -139,10 +138,10 @@
     }
 }
 
-/* Styles for smaller screens (hide the nav) */
 @media (max-width: 767px) {
     .navbar-social, .navbar-contact {
         display: none;
     }
+
 }
 </style>

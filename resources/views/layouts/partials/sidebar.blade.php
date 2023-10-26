@@ -52,7 +52,6 @@
                 <p>Upload Videos</p>
             </a>
         </li>
-
         <li class="nav-item">
             <a href="{{ route('index') }}" class="nav-link {{ request()->is('search*') ? 'bg-secondary active' : '' }}">
                 <i class="nav-icon fas fa-file-alt text-warning"></i>
@@ -87,3 +86,4 @@
         }
     });
 </script>
+

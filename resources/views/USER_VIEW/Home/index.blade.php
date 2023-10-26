@@ -18,7 +18,6 @@
                                 <span class="close" onclick="searchToggle(this, event);"></span>
                             </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -192,9 +191,9 @@
                         <div class="sidebar-item categories">
                             <h3 class="sidebar-title">Categories</h3>
                             <ul class="mt-3">
-                                <li><a href="{{ route('all_news') }}">ALl News &nbsp;<small><span class="badge badge-danger text-light">{{ $news->total() }}</span></small></a></li>
-                                <li><a href="{{ route('all_interruptions') }}">All Interruptions &nbsp;<small><span class="badge badge-danger text-light">{{ $interruptions->total() }}</span></small></a></li>
-                                <li><a href="{{ route('all_advisories') }}">All Advisories &nbsp;<small><span class="badge badge-danger text-light">{{ $advisories->total() }}</span></small></a></li>
+                                <li><i class="bi bi-check-circle text-warning"></i>&nbsp;<a href="{{ route('all_news') }}">ALl News &nbsp;<small><span class="badge badge-danger text-light">{{ $news->total() }}</span></small></a></li>
+                                <li><i class="bi bi-check-circle text-warning"></i>&nbsp;<a href="{{ route('all_interruptions') }}">All Interruptions &nbsp;<small><span class="badge badge-danger text-light">{{ $interruptions->total() }}</span></small></a></li>
+                                <li><i class="bi bi-check-circle text-warning"></i>&nbsp;<a href="{{ route('all_advisories') }}">All Advisories &nbsp;<small><span class="badge badge-danger text-light">{{ $advisories->total() }}</span></small></a></li>
                             </ul>
                         </div>
                         <div class="sidebar-item recent-posts">
@@ -210,7 +209,7 @@
                                             @endforeach
                                         <div>
                                             <h4><a href="#">{{ $recent->title }}</a></h4>
-                                            <time>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i A', $recent->dateTime)->format('M. d, Y h:i A') }}</time>
+                                            <time class="text-warning">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i A', $recent->dateTime)->format('M. d, Y h:i A') }}</time>
                                         </div>
                                     </div>
                                 @endforeach
@@ -226,6 +225,7 @@
             </div>
         </div>
     </section>
+
     <style>
         div.tooltip-inner {
             text-align: center;
@@ -434,5 +434,7 @@
                 container.find('.search-input').val('');
             }
         } 
+
     </script>
+    
 @endsection

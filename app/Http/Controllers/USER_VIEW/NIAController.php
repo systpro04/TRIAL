@@ -21,6 +21,7 @@ class NIAController extends Controller
         $interruptions = Interruption::latest()->paginate(10);
         return view('USER_VIEW.NIA.allint', compact('interruptions'))->with('i', (request()->input('page', 1) - 1) *10);
     }
+
     public function alladv() 
     {
         $advisories = Advisory::latest()->paginate(10);

@@ -11,27 +11,9 @@ use App\Models\HomeImages;
 use App\Models\Link;
 use App\Models\User;
 
+
 class RecycleBinController extends Controller
 {
-    // public function index()
-    // {
-    //     $deletedData = collect();
-
-    //     $deleteduploads = $deletedData->concat(Upload::onlyTrashed()->get());
-    //     $deletednews = $deletedData->concat(News::onlyTrashed()->get());
-    //     $deletedadv = $deletedData->concat(Advisory::onlyTrashed()->get());
-    //     $deletedint = $deletedData->concat(Interruption::onlyTrashed()->get());
-    //     $deleteduser = $deletedData->concat(User::onlyTrashed()->get());
-    //     $deletedlink = $deletedData->concat(Link::onlyTrashed()->get());
-
-    //     return view('ADMIN_VIEW.Recycle_Bin', compact(
-    //         'deleteduploads',
-    //         'deletednews',
-    //         'deletedadv',
-    //         'deletedint',
-    //         'deletedlink'
-    //     ));
-    // }
     public function index()
     {
         $deleteduploads = Upload::onlyTrashed()->get();
@@ -41,15 +23,14 @@ class RecycleBinController extends Controller
         $deleteduser = User::onlyTrashed()->get();
         $deletedlink = Link::onlyTrashed()->get();
 
-        // Merge all the collections into one $deletedData collection
-        $deletedData = $deleteduploads
+        $deleted = $deleteduploads
             ->concat($deletednews)
             ->concat($deletedadv)
             ->concat($deletedint)
             ->concat($deleteduser)
             ->concat($deletedlink);
-
-        return view('ADMIN_VIEW.Recycle_Bin', compact('deletedData'));
+        
+        return view('ADMIN_VIEW.Recycle_Bin', compact('deleted'));
     }
 
     public function restoreRecord($table, $id)

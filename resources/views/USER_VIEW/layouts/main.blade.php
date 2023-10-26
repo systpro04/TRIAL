@@ -23,7 +23,7 @@
 
     <main id="main">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+        @include('sweetalert::alert')
         @yield('content')
     </main>
     @include('USER_VIEW.layouts.footer')
@@ -41,6 +41,8 @@
     <script src="{{ asset('userside/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <script src="{{ asset('userside/assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="{{ asset('userside/assets/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </body>
 <style>
     ul li a:hover {

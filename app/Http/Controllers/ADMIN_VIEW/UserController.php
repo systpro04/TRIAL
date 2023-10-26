@@ -24,7 +24,8 @@ class UserController extends Controller
         return view('ADMIN_VIEW.users.index', compact('users', 'roles'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $users = new User;
 
@@ -35,15 +36,15 @@ class UserController extends Controller
         $users->password = $request->input('password');
         $users->assignRole($request->role);
 
-        if($request->hasFile('profile_image')){
+        if ($request->hasFile('profile_image')) {
 
             $file = $request->file('profile_image');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'. $extention;
-            Image::make($file)->save('/public/user_profile_images/'. $filename);
+            $filename = time() . '.' . $extention;
+            Image::make($file)->save('/public/user_profile_images/' . $filename);
             $users->profile_img = $filename;
 
-          }
+        }
 
         $users->save();
         toastr()->success('User Added Successfully', 'Success', ['iconClass' => 'toast-success']);
@@ -51,7 +52,8 @@ class UserController extends Controller
 
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $users = User::find($id);
 
         $users->name = $request->input('name');
@@ -65,37 +67,36 @@ class UserController extends Controller
         }
 
         $newPassword = $request->get('password');
-        if($request->hasFile('profile_image')){
+        if ($request->hasFile('profile_image')) {
 
-            $destination = '/public/user_profile_images/'.$users->profile_img;
-            if(File::exists($destination)){
+            $destination = '/public/user_profile_images/' . $users->profile_img;
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
 
             $file = $request->file('profile_image');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'. $extention;
+            $filename = time() . '.' . $extention;
             $file->move('/public/user_profile_images/', $filename);
             $users->profile_img = $filename;
 
         }
-    if(empty($newPassword)){
-        $users->update($request->except('password'));
-    }else{
-        $users->update($request->all());
-    }
-    toastr()->success('User Updated Successfully', 'Success', ['iconClass' => 'toast-success']);
-    return redirect()->back();
-
+        if (empty($newPassword)) {
+            $users->update($request->except('password'));
+        } else {
+            $users->update($request->all());
+        }
+        toastr()->success('User Updated Successfully', 'Success', ['iconClass' => 'toast-success']);
+        return redirect()->back();
     }
 
     public function destroy(Request $request, $id)
     {
         $users = User::find($id);
-        $destination = '/public/user_profile_images/'.$users->profile_image;
-            if(File::exists($destination)){
-                File::delete($destination);
-            }
+        $destination = '/public/user_profile_images/' . $users->profile_image;
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
         $users->delete();
         toastr()->success('User Deleted Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->back();
