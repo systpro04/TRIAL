@@ -78,7 +78,7 @@
                 { "data": "age" },
                 { "data": "gender" },
                 { "data": "address.address" },
-                { "data": "address.postalCode" },
+                { "data": "ein" },
             ]
         });
 

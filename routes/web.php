@@ -16,7 +16,7 @@ use App\Http\Controllers\USER_VIEW\AboutController as About;
 use App\Http\Controllers\USER_VIEW\ServicesController as Services;
 use App\Http\Controllers\USER_VIEW\ACHLController as Other;
 use App\Http\Controllers\USER_VIEW\NIAController;
-
+use App\Http\Controllers\ADMIN_VIEW\PowerSupplyController as Power;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,8 +47,10 @@ Route::group(['middleware' => ['role:Super-Admin|Admin']], function () {
     Route::resource('/upload', 'App\Http\Controllers\UploadController');
     Route::resource('/link', 'App\Http\Controllers\LinkController');
     Route::resource('/user', 'App\Http\Controllers\ADMIN_VIEW\UserController');
+    Route::resource('/power', 'App\Http\Controllers\ADMIN_VIEW\PowerSupplyController');
 
-    Route::get('search', [InquiryController::class, 'index'])->name('index');
+    Route::get('search', [InquiryController::class, 'index'])->name('search_index');
+    Route::get('/searchData', [InquiryController::class, 'search'])->name('search');
     
 
     Route::get('/recycle-bin', [RecycleBinController::class, 'index'])->name('recyclebin');
@@ -68,7 +70,9 @@ Route::get('/history', [Other::class, 'history'])->name('history');
 Route::get('/allnews', [NIAController::class, 'allnews'])->name('all_news');
 Route::get('/allint', [NIAController::class, 'allint'])->name('all_interruptions');
 Route::get('/alladv', [NIAController::class, 'alladv'])->name('all_advisories');
-Route::get('/searchData/{query}', [InquiryController::class, 'search'])->name('search');
+Route::get('/search', [InquiryController::class, 'search_data']);
+
+// Route::get('/searchData/{query}', [InquiryController::class, 'search'])->name('search');
 
 // Route::group(['middleware' => ['role:User']], function () {
 //     Route::get('search', [InquiryController::class, 'index'])->name('index');

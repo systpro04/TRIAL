@@ -52,10 +52,16 @@
                 <p>Upload Videos</p>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="{{ route('index') }}" class="nav-link {{ request()->is('search*') ? 'bg-secondary active' : '' }}">
+        {{-- <li class="nav-item">
+            <a href="{{ route('search_index') }}" class="nav-link {{ request()->is('search*') ? 'bg-secondary active' : '' }}">
                 <i class="nav-icon fas fa-file-alt text-warning"></i>
                 <p>Inquiry</p>
+            </a>
+        </li> --}}
+        <li class="nav-item">
+            <a href="{{ route('power.index') }}" class="nav-link {{ request()->is('power*') ? 'bg-secondary active' : '' }}">
+                <i class="nav-icon fas fa-bolt text-warning"></i>
+                <p>Powersupply Outlook</p>
             </a>
         </li>
         <li class="nav-item">

@@ -20,5 +20,15 @@ class InquiryController extends Controller
             return $response->json();
         }
     }
+
+    public function search_data(Request $request)
+    {
+        $query = $request->input('query');
+        $response = Http::get('https://dummyjson.com/users?query=' . $query);
+        if ($response->ok()) {
+            return $response->json();
+        }
+        return response()->json(['error' => 'Search failed'], 500);
+    }
 }
 

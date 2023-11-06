@@ -8,15 +8,14 @@
                         <h2 data-aos="fade-down">Trial and Error</h2>
                         <p data-aos="fade-up">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                        {{-- <a data-aos="fade-up" data-aos-delay="200" href="{{ route('login') }}" class="btn-get-started">Get
-                            Started</a> --}}
-                            <div class="search-wrapper" style="margin-top: 13%">
-                                <div class="input-holder">
-                                    <input type="text" class="search-input" placeholder="Balance Inquiry..." onkeyup="search()">
-                                    <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
-                                </div>
-                                <span class="close" onclick="searchToggle(this, event);"></span>
+                        {{-- <a data-aos="fade-up" data-aos-delay="200" href="{{ route('login') }}" class="btn-get-started">Get Started</a> --}}
+                        <div class="search-wrapper" style="margin-top: 13%">
+                            <div class="input-holder">
+                                <input type="text" class="search-input" placeholder="Balance Inquiry..." onkeyup="search()">
+                                <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
                             </div>
+                            <span class="close" onclick="searchToggle(this, event);"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -24,7 +23,7 @@
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
             @foreach ($images as $index => $image)
                 @foreach (json_decode($image->image) as $filename)
-                    @if (file_exists(public_path("uploads/home_images/$filename")))
+                    @if (file_exists(public_path("uploads/home_i      mages/$filename")))
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-image: url('{{ asset("uploads/home_images/$filename") }}');"></div>
                     @endif
                 @endforeach
@@ -44,20 +43,98 @@
             </ol>
         </div>
     </div>
+    <section id="get-started" class="get-started section-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powersupply Outlook</h2>
+            </div>
+            <div class="row justify-content-between">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-lg-12" data-aos="fade-up">
+                            <div class="content">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover text-center shadow">
+                                        <thead>
+                                            <tr>
+                                                <th width="200">Capacity (kW)</th>
+                                                <th width="100">Morning<br>(1:00AM-12:00NN)</th>
+                                                <th width="100">Afternoon<br>(12:01PM-6:00PM)</th>
+                                                <th width="100">Evening<br>(6:01PM-12:59PM)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(count($powers) > 0)
+                                            @foreach ($powers as $pow )
+                                            <tr>
+                                                <td>{{ $pow->capacity }}</td>
+                                                <td>{{ $pow->morning }}</td>
+                                                <td>{{ $pow->afternoon }}</td>
+                                                <td>{{ $pow->evening }} </td>
+                                            </tr>
+                                            @endforeach
+                                            @else
+                                                <div class="col-md-12 text-center">
+                                                    <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
+                                                </div>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="get-started" class="get-started section-bg">
         <div class="container">
+            <div class="section-header">
+                <h2>Advisories</h2>
+                <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p>
+            </div>
             <div class="row justify-content-between gy-4">
                 <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
                     <div class="content">
                         <h3>Minus hic non reiciendis ea possimus at quia.</h3>
-                        <p>Rem id rerum. Debitis deserunt quidem delectus expedita ducimus dolor. Aut iusto ipsa. Eos ipsum
-                            nobis ipsa soluta itaque perspiciatis fuga ipsum perspiciatis. Eum amet fugiat totam nisi
-                            possimus ut delectus dicta.
-                        <p>Aliquam velit deserunt autem. Inventore et saepe. Tenetur suscipit eligendi labore culpa eos.
-                            Deserunt porro magni qui necessitatibus dolorem at animi cupiditate.</p>
+                        <p>Rem id rerum. Debitis deserunt quidem delectus expedita ducimus dolor. Aut iusto ipsa. Eos ipsum nobis ipsa soluta itaque perspiciatis fuga ipsum perspiciatis. Eum amet fugiat totam nisi possimus ut delectus dicta.</p>
+                        <p>Aliquam velit deserunt autem. Inventore et saepe. Tenetur suscipit eligendi labore culpa eos. Deserunt porro magni qui necessitatibus dolorem at animi cupiditate.</p>
                     </div>
                 </div>
+                <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
+                    <div class="content">
+                        <h4>Related Advisories</h4>
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table table-striped shadow table-hover text-center">
+                                    <thead class="bg-primary text-light">
+                                        <tr>
+                                            <th>Place</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       @foreach ($advisories as $adv )
+                                       <tr>
+                                            <td>{{ $adv->place }}</td>
+                                            @php
+                                                $dateRange = explode(" to ", $adv->dateTime);
+                                                $startDate = date("F, j, Y g:i A", strtotime($dateRange[0]));
+                                                $endDate = date("F, j, Y g:i A", strtotime($dateRange[1]));
+                                            @endphp
+                                            <td>
+                                                <span><small>From <strong>{{ $startDate }}</strong> to <strong>{{ $endDate }}</strong></small></span>
+                                            </td>
+                                        </tr>
+                                       @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>     
             </div>
         </div>
     </section>
@@ -88,7 +165,7 @@
                                                                 $startDate = date("F, j, Y g:i A", strtotime($dateRange[0]));
                                                                 $endDate = date("F, j, Y g:i A", strtotime($dateRange[1]));
                                                             @endphp
-                                                            <th class="table-active" colspan="2">From <strong>{{ $startDate }}</strong> to <strong>{{ $endDate }}</strong></th>
+                                                            <th class="table-active" colspan="2"><strong>{{ $startDate }}</strong> to <strong>{{ $endDate }}</strong></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -103,14 +180,12 @@
                                                         <tr>
                                                             <th width="20%" class="text-muted">WHY</th>
                                                             <td width="80%">
-                                                                <button class="btn-block mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{ $int->id }}" aria-bs-expanded="false" aria-bs-controls="collapseExample" style="border:none; "> <strong
-                                                                        class="text-dark"><small>see more...</small></strong></button>
-                                                                <div class="collapse"
-                                                                    id="collapseExample-{{ $int->id }}">
+                                                                <button class="btn-block mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{ $int->id }}" aria-bs-expanded="false" aria-bs-controls="collapseExample" style="border:none; "> <strong class="text-dark"><small>show more...</small></strong></button>
+                                                                <div class="collapse" id="collapseExample-{{ $int->id }}">
                                                                     <textarea style="height: 200px; font-size: 12px; font-weight: bold" class="form-control" disabled>{{ $int->why }}</textarea>
                                                                 </div>
                                                             </td>
-                                                            </td>
+
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -135,8 +210,7 @@
                     @endforeach
                 @else
                     <div class="col-md-12 text-center">
-                        <p style="animation: bounce 1.5s infinite; color: red; font-size: 1.5rem; text-transform:uppercase">
-                            No interruptions yet..</p>
+                        <p style="animation: bounce 1.5s infinite; color: red; font-size: 1.5rem; text-transform:uppercase"> No interruptions yet..</p>
                     </div>
                 @endif
             </div>
