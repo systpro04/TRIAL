@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item text-secondary">Recycle Bin</li>
                     </ol>
                 </div>
@@ -31,6 +31,7 @@
                                 <a href="{{ route('news.index') }}" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="News"><i class="fas fa-newspaper"></i></a>
                                 <a href="{{ route('interruptions.index') }}" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Interruptions"><i class="fas fa-exclamation"></i></a>
                                 <a href="{{ route('advisories.index') }}" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Advisories"><i class="fas fa-lightbulb"></i></a>
+                                <a href="{{ route('power.index') }}" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Powersupply Outlook"><i class="fas fa-bolt"></i></a>
                             </div>
                         </div>
                     </div>
@@ -63,8 +64,8 @@
                                                     {{ $record->place }}
                                                 @elseif ($record->getTable() === 'uploads' && isset($record->title))
                                                     {{ $record->title }}
-                                                @elseif ($record->getTable() === 'links' && isset($record->title))
-                                                    {{ $record->title }}
+                                                @elseif ($record->getTable() === 'powers' && isset($record->capacity))
+                                                    {{ $record->capacity }}
                                                 @endif
                                             </td>
                                             <td>{{ $record->deleted_at }}</td>

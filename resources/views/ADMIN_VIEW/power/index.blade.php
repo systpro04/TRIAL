@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item text-secondary">Powersupply</li>
                     </ol>
                 </div>
@@ -35,14 +35,14 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-reponsive">
+                       <div class="table-responsive">
                             <table class="table table-striped shadow table-hover text-center">
                                 <thead class="bg-primary text-center">
                                     <tr>
-                                        <th width="200">Capacity (kW)</th>
-                                        <th width="100">Morning<br>(1:00AM-12:00NN)</th>
-                                        <th width="100">Afternoon<br>(12:01PM-6:00PM)</th>
-                                        <th width="100">Evening<br>(6:01PM-12:59PM)</th>
+                                        <th>Capacity ( kW )</th>
+                                        <th>Morning ( 1:00AM-12:00NN )</th>
+                                        <th>Afternoon ( 12:01PM-6:00PM )</th>
+                                        <th>Evening ( 6:01PM-12:59PM )</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -53,21 +53,15 @@
                                             <td>{{ $pow->capacity }}</td>
                                             <td>{{ $pow->morning }}</td>
                                             <td>{{ $pow->afternoon }}</td>
-                                            <td>{{ $pow->morning }}</td>
+                                            <td>{{ $pow->evening }}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#edit{{ $pow->id }}">
                                                     <button class="btn btn-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fas fa-pen"></i></button>
                                                 </a>  
-                                                <form id="delete-form-{{ $pow->id }}"
-                                                    action="{{ route('power.destroy', $pow->id) }}" method="POST"
-                                                    class="d-inline">
+                                                <form id="delete-form-{{ $pow->id }}" action="{{ route('power.destroy', $pow->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button
-                                                        onclick="deleteData({{ $pow->id }})"
-                                                        type="button"
-                                                        onclick="deleteAdvisory()" class="btn btn-danger btn-sm"><i
-                                                            class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"></i></button>
+                                                    <button onclick="deleteData({{ $pow->id }})" type="button" onclick="deleteAdvisory()" class="btn btn-danger btn-sm"><i class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -80,10 +74,10 @@
                                     @endif
                                 </tbody>
                             </table>
-                            {{-- <div class="d-flex justify-content-end">
-                                {!! $powers->links() !!}
-                            </div> --}}
-                        </div>
+                       </div>
+                        {{-- <div class="d-flex justify-content-end">
+                            {!! $powers->links() !!}
+                        </div> --}}
                     </div>
                 </div>
             </div>

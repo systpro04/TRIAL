@@ -20,7 +20,7 @@ class HomeController extends Controller
         $recentNews = News::latest()->take(5)->get();
         $interruptions = Interruption::latest()->paginate(2);
         $advisories = Advisory::latest()->paginate(3);
-        $powers = Power::latest()->paginate(3);
+        $powers = Power::get();
         return view('USER_VIEW.Home.index', compact('users', 'images', 'news','recentNews', 'interruptions', 'advisories', 'powers'));
     }
 

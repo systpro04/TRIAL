@@ -49,7 +49,7 @@ class RecycleBinController extends Controller
             case 'uploads':
                 $record = Upload::withTrashed()->find($id);
                 break;
-            case 'power':
+            case 'powers':
                 $record = Power::withTrashed()->find($id);
                 break;
             default:
@@ -80,7 +80,7 @@ class RecycleBinController extends Controller
             case 'uploads':
                 $record = Upload::withTrashed()->find($id);
                 break;
-            case 'power':
+            case 'powers':
                 $record = Power::withTrashed()->find($id);
                 break;
             default:

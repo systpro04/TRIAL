@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item active">Uploads</li>
                     </ol>
                 </div>
@@ -19,7 +19,7 @@
         <hr>
     </div>
 
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-primary mt-2 card-outline shadow" style="background-color: rgba(245, 245, 245, 0.57)">
@@ -62,8 +62,8 @@
                                         </td>
                                     </tr>
                                     @include('ADMIN_VIEW.upload.edit')
-                                   @endforeach
-                                   @else
+                                    @endforeach
+                                    @else
                                         <div class="col-md-12 text-center">
                                             <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
                                         </div>

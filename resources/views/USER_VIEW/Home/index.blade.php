@@ -57,7 +57,7 @@
                                     <table class="table table-striped table-hover text-center shadow">
                                         <thead>
                                             <tr>
-                                                <th width="200">Capacity (kW)</th>
+                                                <th width="200">Capacity<br> (kW)</th>
                                                 <th width="100">Morning<br>(1:00AM-12:00NN)</th>
                                                 <th width="100">Afternoon<br>(12:01PM-6:00PM)</th>
                                                 <th width="100">Evening<br>(6:01PM-12:59PM)</th>
@@ -68,9 +68,9 @@
                                             @foreach ($powers as $pow )
                                             <tr>
                                                 <td>{{ $pow->capacity }}</td>
-                                                <td>{{ $pow->morning }}</td>
-                                                <td>{{ $pow->afternoon }}</td>
-                                                <td>{{ $pow->evening }} </td>
+                                                <th>{{ $pow->morning }}</th>
+                                                <th>{{ $pow->afternoon }}</th>
+                                                <th>{{ $pow->evening }} </th>
                                             </tr>
                                             @endforeach
                                             @else

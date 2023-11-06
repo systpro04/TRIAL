@@ -10,9 +10,9 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item text-secondary">Dashboard</li>
-                        <li class="breadcrumb-item"><a href="#" data-toggle="modal"  data-target="#create"><i class="fas fa-plus-circle"></i></a></li>
+                        <li class="breadcrumb-item"><a href="#" data-toggle="modal" data-target="#create"><i class="fas fa-plus-circle"></i></a></li>
                     </ol>
                 </div>
             </div>
@@ -49,7 +49,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-3 col-6">
                     <div class="info-box" style="background-color: teal">
                         <span class="info-box-icon text-warning"><i class="fas fa-exclamation"></i></span>
@@ -63,7 +62,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-3 col-6">
                     <div class="info-box" style="background-color: teal">
                         <span class="info-box-icon text-warning"><i class="fas fa-upload"></i></span>
