@@ -16,6 +16,7 @@
     <link href="{{ asset('userside/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('userside/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('userside/assets/css/main.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 </head>
 
 <body>
@@ -42,6 +43,7 @@
     <script src="{{ asset('userside/assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="{{ asset('userside/assets/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 
 </body>
 <style>

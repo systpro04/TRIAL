@@ -53,11 +53,11 @@
                                                 <div class="carousel-container">
                                                     @if ($new->image)
                                                         <div id="imageCarousel-{{ $new->id }}" class="carousel" data-ride="carousel">
-                                                                @foreach (json_decode($new->image) as $key => $image)
-                                                                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                                                                        <img src="{{ asset('uploads/news/' . $image) }}" alt="Image" style="width: 100px ;height: 50px">
-                                                                    </div>
-                                                                @endforeach
+                                                            @foreach (json_decode($new->image) as $key => $image)
+                                                                <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                                                    <img src="{{ asset('uploads/news/' . $image) }}" alt="Image" style="width: 100px ;height: 50px">
+                                                                </div>
+                                                            @endforeach
                                                         </div>
                                                     @else
                                                         No image available

@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function home()
     {
         $users = User::all();
-        $images = HomeImages::all();
+        $images = HomeImages::get();
         $news = News::latest()->paginate(1);
         $recentNews = News::latest()->take(5)->get();
         $interruptions = Interruption::latest()->paginate(2);

@@ -21,9 +21,9 @@
             </div>
         </div>
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-            @foreach ($images as $index => $image)
-                @foreach (json_decode($image->image) as $filename)
-                    @if (file_exists(public_path("uploads/home_i      mages/$filename")))
+            @foreach ($images as $index => $img)
+                @foreach (json_decode($img->image) as $filename)
+                    @if (file_exists(public_path("uploads/home_images/$filename")))
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-image: url('{{ asset("uploads/home_images/$filename") }}');"></div>
                     @endif
                 @endforeach
@@ -46,50 +46,245 @@
     <section id="get-started" class="get-started section-bg">
         <div class="container">
             <div class="section-header">
-                <h2>Powersupply Outlook</h2>
+                <h2>Powersupply Outlook & Collection Dates & Powerrates</h2>
             </div>
-            <div class="row justify-content-between">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="col-lg-12" data-aos="fade-up">
-                            <div class="content">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-hover text-center shadow">
-                                        <thead>
-                                            <tr>
-                                                <th width="200">Capacity<br> (kW)</th>
-                                                <th width="100">Morning<br>(1:00AM-12:00NN)</th>
-                                                <th width="100">Afternoon<br>(12:01PM-6:00PM)</th>
-                                                <th width="100">Evening<br>(6:01PM-12:59PM)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if(count($powers) > 0)
-                                            @foreach ($powers as $pow )
-                                            <tr>
-                                                <td>{{ $pow->capacity }}</td>
-                                                <th>{{ $pow->morning }}</th>
-                                                <th>{{ $pow->afternoon }}</th>
-                                                <th>{{ $pow->evening }} </th>
-                                            </tr>
-                                            @endforeach
-                                            @else
-                                                <div class="col-md-12 text-center">
-                                                    <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
-                                                </div>
-                                            @endif
-                                        </tbody>
-                                    </table>
+            {{-- <div class="card">
+                <div class="card-body"> --}}
+                    <div class="row">
+                        <div class="col-lg-4" data-aos="fade-up">
+                            <div class="card mb-2">
+                                <div class="card-header">
+                                    <h4>Powersupply Outlook</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover text-center shadow table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Capacity<br> (kW)</th>
+                                                    <th>Morning<br>(1:00AM-12:00NN)</th>
+                                                    <th>Afternoon<br>(12:01PM-6:00PM)</th>
+                                                    <th>Evening<br>(6:01PM-12:59PM)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if(count($powers) > 0)
+                                                @foreach ($powers as $pow )
+                                                <tr>
+                                                    <td>{{ $pow->capacity }}</td>
+                                                    <th>{{ $pow->morning }}</th>
+                                                    <th>{{ $pow->afternoon }}</th>
+                                                    <th>{{ $pow->evening }} </th>
+                                                </tr>
+                                                @endforeach
+                                                @else
+                                                    <div class="col-md-12 text-center">
+                                                        <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
+                                                    </div>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="col-lg-4" data-aos="fade-up">
+                            <div class="card mb-2">
+                                <div class="card-header">
+                                    <h4>Collection Dates</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover text-center shadow table-bordered" id="myTable" width="100%">
+                                            <thead>
+                                                <tr class="row-1 odd ">
+                                                    <th class="column-1 text-center">Municipality</th>
+                                                    <th class="column-2 text-center">Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="row-hover">
+                                                <tr class="row-2 even">
+                                                    <td class="column-1">Batuan</td><td class="column-2">14</td>
+                                                </tr>
+                                                <tr class="row-3 odd">
+                                                    <td class="column-1">Bilar</td><td class="column-2">16</td>
+                                                </tr>
+                                                <tr class="row-4 even">
+                                                    <td class="column-1">Catigbian</td><td class="column-2">18</td>
+                                                </tr>
+                                                <tr class="row-5 odd">
+                                                    <td class="column-1">San Isidro</td><td class="column-2">17</td>
+                                                </tr>
+                                                <tr class="row-6 even">
+                                                    <td class="column-1">Sagbayan</td><td class="column-2">20</td>
+                                                </tr>
+                                                <tr class="row-7 odd">
+                                                    <td class="column-1">Clarin</td><td class="column-2">21</td>
+                                                </tr>
+                                                <tr class="row-8 even">
+                                                    <td class="column-1">Calape</td><td class="column-2">22 - 24</td>
+                                                </tr>
+                                                <tr class="row-9 odd">
+                                                    <td class="column-1">Tubigon</td><td class="column-2">26 - 30</td>
+                                                </tr>
+                                                <tr class="row-10 even">
+                                                    <td class="column-1">Loon</td><td class="column-2">4 - 6</td>
+                                                </tr>
+                                                <tr class="row-11 odd">
+                                                    <td class="column-1">Balilihan</td><td class="column-2">8</td>
+                                                </tr>
+                                                <tr class="row-12 even">
+                                                    <td class="column-1">Inabanga</td><td class="column-2">9 - 10</td>
+                                                </tr>
+                                                <tr class="row-13 odd">
+                                                    <td class="column-1">Carmen</td><td class="column-2">11 - 12</td>
+                                                </tr>
+                                                <tr class="row-14 even">
+                                                    <td class="column-1">Sevilla</td><td class="column-2">12</td>
+                                                </tr>
+                                                <tr class="row-15 odd">
+                                                    <td class="column-1">Lila</td><td class="column-2">15</td>
+                                                </tr>
+                                                <tr class="row-16 even">
+                                                    <td class="column-1">Loay</td><td class="column-2">17 - 18</td>
+                                                </tr>
+                                                <tr class="row-17 odd">
+                                                    <td class="column-1">Baclayon</td><td class="column-2">20</td>
+                                                </tr>
+                                                <tr class="row-18 even">
+                                                    <td class="column-1">Antequera</td><td class="column-2">22</td>
+                                                </tr>
+                                                <tr class="row-19 odd">
+                                                    <td class="column-1">Maribojoc</td><td class="column-2">24 - 25</td>
+                                                </tr>
+                                                <tr class="row-20 even">
+                                                    <td class="column-1">Dauis</td><td class="column-2">27 - 28</td>
+                                                </tr>
+                                                <tr class="row-21 odd">
+                                                    <td class="column-1">Panglao</td><td class="column-2">2 - 3</td>
+                                                </tr>
+                                                <tr class="row-22 even">
+                                                    <td class="column-1">Cortes</td><td class="column-2">4</td>
+                                                </tr>
+                                                <tr class="row-23 odd">
+                                                    <td class="column-1">Loboc</td><td class="column-2">5</td>
+                                                </tr>
+                                                <tr class="row-24 even">
+                                                    <td class="column-1">Dimiao</td><td class="column-2">6</td>
+                                                </tr>
+                                                <tr class="row-25 odd">
+                                                    <td class="column-1">Sikatuna</td><td class="column-2">7</td>
+                                                </tr>
+                                                <tr class="row-26 even">
+                                                    <td class="column-1">Alburquerque</td><td class="column-2">10</td>
+                                                </tr>
+                                                <tr class="row-27 odd">
+                                                    <td class="column-1">Corella</td><td class="column-2">11</td>
+                                                </tr>
+                                            </thead>
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4" data-aos="fade-up">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Collection Dates</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover text-center shadow">
+                                            <thead class="bg-dark text-light">
+                                                <th>Consumer Class</th>
+                                                <th></th>
+                                                <th style="text-align: center;">Rate<br>(PhP/kWh)</th>
+                                                <th style="text-align: center;">Rate<br>(PhP/kW)</th>
+                                                <th style="text-align: center;">Fixed Monthly Rate<br>(PhP)</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-primary">
+                                                    <th class="text-primary">Residential</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>On-Grid</td>
+                                                    <th>16.3144</th>
+                                                    <th></th>
+                                                    <th>5.6000</th>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Off-Grid (Islands)</td>
+                                                    <th>10.4416</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+        
+                                                <tr class="bg-primary">
+                                                    <th class="text-primary">Low Voltage</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Commercial</td>
+                                                    <th>15.3608</th>
+                                                    <th></th>
+                                                    <th>88.3232</th>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Public Building</td>
+                                                    <th>15.3608</th>
+                                                    <th></th>
+                                                    <th>88.3232</th>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Street Lights</td>
+                                                    <th>15.3608</th>
+                                                    <th></th>
+                                                    <th>88.3232</th>
+                                                </tr>
+        
+                                                <tr class="bg-primary">
+                                                    <th class="text-primary">High Voltage</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Industrial</td>
+                                                    <th>13.8400</th>
+                                                    <th>658.7205</th>
+                                                    <th>88.3232</th>
+                                                </tr>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
                     </div>
-                </div>
-            </div>
+                {{-- </div>
+            </div> --}}
         </div>
     </section>
 
-    <section id="get-started" class="get-started section-bg">
+    <section id="get-started" class="get-started">
         <div class="container">
             <div class="section-header">
                 <h2>Advisories</h2>
@@ -105,11 +300,11 @@
                 </div>
                 <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
                     <div class="content">
-                        <h4>Related Advisories</h4>
+                        <h4> <i class="bi bi-check-circle text-warning"></i>&nbsp; Related Advisories</h4>
                         <div class="card">
                             <div class="card-body">
                                 <table class="table table-striped shadow table-hover text-center">
-                                    <thead class="bg-primary text-light">
+                                    <thead>
                                         <tr>
                                             <th>Place</th>
                                             <th>Date</th>
@@ -165,7 +360,7 @@
                                                                 $startDate = date("F, j, Y g:i A", strtotime($dateRange[0]));
                                                                 $endDate = date("F, j, Y g:i A", strtotime($dateRange[1]));
                                                             @endphp
-                                                            <th class="table-active" colspan="2"><strong>{{ $startDate }}</strong> to <strong>{{ $endDate }}</strong></th>
+                                                            <th class="table-active" colspan="2"><i class="bi bi-check-circle text-warning"></i>&nbsp;<strong>{{ $startDate }}</strong> to <strong>{{ $endDate }}</strong></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -299,7 +494,6 @@
             </div>
         </div>
     </section>
-
     <style>
         div.tooltip-inner {
             text-align: center;
@@ -491,7 +685,6 @@
             top: 10px;
         } 
     </style>
-
     <script>
         function showFullContent() {
             const contentDiv = document.querySelector('.content');
@@ -510,5 +703,13 @@
         } 
 
     </script>
-    
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+                "lengthMenu" : [ [10, 25, 50, 100, 10000], [10, 25, 50, 100, "Max"] ],
+                "pageLength" : 10,
+                "searching": false
+            });
+        });
+    </script>
 @endsection
