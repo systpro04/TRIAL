@@ -75,7 +75,7 @@
                                         <div class="col-md-12 text-center">
                                             <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
                                         </div> --}}
-                                    @endif
+                                    {{-- @endif --}}
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">
