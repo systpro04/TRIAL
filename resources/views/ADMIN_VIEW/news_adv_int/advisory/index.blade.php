@@ -36,7 +36,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-reponsive">
-                            <table class="table table-striped shadow table-hover text-center">
+                            <table class="table table-striped shadow table-hover text-center" id="advisory">
                                 <thead class="bg-primary text-center">
                                     <tr>
                                         <th>Place</th>
@@ -46,7 +46,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($advisories) > 0)
+                                    {{-- @if(count($advisories) > 0) --}}
                                     @foreach ($advisories as $adv)
                                         <tr>
                                             <td>{{ $adv->place }}</td>
@@ -76,11 +76,11 @@
                                         </tr>
                                         @include('ADMIN_VIEW.news_adv_int.advisory.edit')
                                     @endforeach
-                                    @else
+                                    {{-- @else
                                         <div class="col-md-12 text-center">
                                             <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">
@@ -111,5 +111,13 @@
             }
         })
     }
+</script>
+<script>
+    $(document).ready( function () {
+        $('#advisory').DataTable({
+            "lengthMenu" : [ [10, 25, 50, 100, 10000], [10, 25, 50, 100, "Max"] ],
+            "pageLength" : 10,
+        });
+    });
 </script>
 @endsection

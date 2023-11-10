@@ -12,7 +12,6 @@ class InquiryController extends Controller
     {
         return view('search');
     }
-
     public function search()
     {
         $response = Http::get('https://dummyjson.com/users');
@@ -20,7 +19,6 @@ class InquiryController extends Controller
             return $response->json();
         }
     }
-
     public function search_data(Request $request)
     {
         $query = $request->input('query');

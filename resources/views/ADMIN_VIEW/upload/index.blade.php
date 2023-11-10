@@ -36,7 +36,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-reponsive">
-                            <table class="table table-striped shadow table-hover text-center">
+                            <table class="table table-striped shadow table-hover text-center" id="uploadTables">
                                 <thead class="bg-primary text-center">
                                     <tr>
                                         <th>File</th>
@@ -45,7 +45,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($uploads) > 0)
+                                    {{-- @if(count($uploads) > 0) --}}
                                     @foreach ($uploads as $upload )
                                     <tr>
                                         <td><video style=" height: 60px; width: 100px;" class="text-center" controls> <source src="{{ URL::asset('uploads/videos/' . $upload->file) }}" style=" height: 60px; width: 100px;" type="video/mp4"></td>
@@ -63,11 +63,11 @@
                                     </tr>
                                     @include('ADMIN_VIEW.upload.edit')
                                     @endforeach
-                                    @else
+                                    {{-- @else
                                         <div class="col-md-12 text-center">
                                             <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
                                         </div>
-                                    @endif
+                                    @endif --}}
                                    
                                 </tbody>
                             </table>
@@ -96,5 +96,13 @@
             }
         })
     }
+</script>
+<script>
+    $(document).ready( function () {
+        $('#uploadTables').DataTable({
+            "lengthMenu" : [ [10, 25, 50, 100, 10000], [10, 25, 50, 100, "Max"] ],
+            "pageLength" : 10,
+        });
+    });
 </script>
 @endsection

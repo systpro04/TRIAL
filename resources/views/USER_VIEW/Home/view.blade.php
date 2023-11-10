@@ -1,5 +1,4 @@
-<div class="modal fade" id="newsView-{{ $new->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="newsView-{{ $new->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary text-light">
@@ -19,8 +18,7 @@
             @foreach (json_decode($new->image, true) as $img)
                 <div>
                     <figure style="box-shadow: 2px 4px 8px rgba(0,0,0,0.4); ">
-                        <img style="padding: 5px; height: 30%; width: 100%; padding-left: 20px; padding-right: 20px;"
-                            src="{{ url('uploads/news/' . $img) }}" alt="Image">
+                        <img style="padding: 5px; height: 30%; width: 100%; padding-left: 20px; padding-right: 20px;" src="{{ url('uploads/news/' . $img) }}" alt="Image">
                     </figure>
                 </div>
             @endforeach

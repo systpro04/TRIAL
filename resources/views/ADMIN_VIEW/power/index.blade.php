@@ -36,7 +36,7 @@
                     </div>
                     <div class="card-body">
                        <div class="table-responsive">
-                            <table class="table table-striped shadow table-hover text-center">
+                            <table class="table table-striped shadow table-hover text-center" id="power">
                                 <thead class="bg-primary text-center">
                                     <tr>
                                         <th>Capacity ( kW )</th>
@@ -47,7 +47,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($powers) > 0)
+                                    {{-- @if(count($powers) > 0) --}}
                                     @foreach ($powers as $pow)
                                         <tr>
                                             <td>{{ $pow->capacity }}</td>
@@ -67,11 +67,11 @@
                                         </tr>
                                         @include('ADMIN_VIEW.power.edit')
                                     @endforeach
-                                    @else
+                                    {{-- @else
                                         <div class="col-md-12 text-center">
                                             <td style="color: red; font-size: 1rem; text-transform:uppercase" colspan="12">No Data Available</td>                     
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </tbody>
                             </table>
                        </div>
@@ -102,5 +102,13 @@
             }
         })
     }
+</script>
+<script>
+    $(document).ready( function () {
+        $('#power').DataTable({
+            "lengthMenu" : [ [10, 25, 50, 100, 10000], [10, 25, 50, 100, "Max"] ],
+            "pageLength" : 10,
+        });
+    });
 </script>
 @endsection

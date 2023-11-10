@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-reponsive">
-                            <table class="table table-striped shadow table-hover text-center">
+                            <table class="table table-striped shadow table-hover text-center" id="binTable">
                                 <thead class="bg-primary text-center">
                                     <tr>
                                         <th>Table</th>
@@ -125,5 +125,13 @@
             }
         });
     }
+</script>
+<script>
+    $(document).ready( function () {
+        $('#binTable').DataTable({
+            "lengthMenu" : [ [10, 25, 50, 100, 10000], [10, 25, 50, 100, "Max"] ],
+            "pageLength" : 10,
+        });
+    });
 </script>
 @endsection

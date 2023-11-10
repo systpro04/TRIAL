@@ -32,7 +32,6 @@ class RecycleBinController extends Controller
         
         return view('ADMIN_VIEW.Recycle_Bin', compact('deleted'));
     }
-
     public function restoreRecord($table, $id)
     {
         $record = null;
@@ -63,7 +62,6 @@ class RecycleBinController extends Controller
         toastr()->success('Data Restored Successfully', 'Success', ['iconClass' => 'toast-success']);
         return redirect()->back();
     }
-
     public function permanentDeleteRecord($table, $id)
     {
         $record = null;
