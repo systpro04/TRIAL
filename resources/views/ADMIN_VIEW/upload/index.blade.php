@@ -51,14 +51,20 @@
                                         <td><video style=" height: 60px; width: 100px;" class="text-center" controls> <source src="{{ URL::asset('uploads/videos/' . $upload->file) }}" style=" height: 60px; width: 100px;" type="video/mp4"></td>
                                         <td>{{ $upload->title }}</td>
                                         <td>
-                                            <a href="#" data-toggle="modal" data-target="#edit{{$upload->id}}">
-                                                <button class="btn btn-sm btn-success" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fas fa-pen"></i></button>
-                                            </a>                                                
-                                            <form id="delete-form-{{ $upload->id }}" action="{{ route('upload.destroy', $upload->id) }}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="button" onclick="deleteData({{ $upload->id }})" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></button>
-                                            </form>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-danger">Action</button>
+                                                <button type="button" class="btn btn-sm btn-danger dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <div class="dropdown-menu" role="menu">
+                                                    <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#edit{{$upload->id}}">Edit</a>                                                
+                                                    <form id="delete-form-{{ $upload->id }}" action="{{ route('upload.destroy', $upload->id) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <a type="button" onclick="deleteData({{ $upload->id }})" class="dropdown-item">Delete</a>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     @include('ADMIN_VIEW.upload.edit')

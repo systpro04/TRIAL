@@ -58,20 +58,21 @@
                                             @endphp
                                             <td>{{ $startDate }} to {{ $endDate }}</td>
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target="#edit{{ $adv->id }}">
-                                                    <button class="btn btn-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fas fa-pen"></i></button>
-                                                </a>  
-                                                <form id="delete-form-{{ $adv->id }}"
-                                                    action="{{ route('advisories.destroy', $adv->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button
-                                                        onclick="deleteData({{ $adv->id }})"
-                                                        type="button"
-                                                        onclick="deleteAdvisory()" class="btn btn-danger btn-sm"><i
-                                                            class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"></i></button>
-                                                </form>
+
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-danger">Action</button>
+                                                    <button type="button" class="btn btn-sm btn-danger dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                      <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu" role="menu">
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit{{ $adv->id }}">Edit</a>                                                
+                                                        <form id="delete-form-{{ $adv->id }}" action="{{ route('advisories.destroy', $adv->id) }}" method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <a type="button" onclick="deleteData({{ $adv->id }})" class="dropdown-item">Delete</a>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         @include('ADMIN_VIEW.news_adv_int.advisory.edit')

@@ -70,16 +70,25 @@
                                             </td>
                                             <td>{{ $record->deleted_at }}</td>
                                             <td>
-                                                <form id="restore-form-{{ $record->id }}" action="{{ route('restore-record', ['table' => $record->getTable(), 'id' => $record->id]) }}" method="post" style="display: inline;">
-                                                    @csrf
-                                                    @method('put')
-                                                    <button onclick="restoreData({{ $record->id }})" type="button" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Restore"><i class="fas fa-recycle"></i></button>
-                                                </form>
-                                                <form id="delete-form-{{ $record->id }}" action="{{ route('permanent-delete-record', ['table' => $record->getTable(), 'id' => $record->id]) }}" method="post" style="display: inline;">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button onclick="deleteData({{ $record->id }})" type="button" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></button>
-                                                </form>
+
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-danger">Action</button>
+                                                    <button type="button" class="btn btn-sm btn-danger dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                      <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu" role="menu">
+                                                        <form id="restore-form-{{ $record->id }}" action="{{ route('restore-record', ['table' => $record->getTable(), 'id' => $record->id]) }}" method="post" style="display: inline;">
+                                                            @csrf
+                                                            @method('put')
+                                                            <button onclick="restoreData({{ $record->id }})" type="button" class="dropdown-item">Restore</a>
+                                                        </form>
+                                                        <form id="delete-form-{{ $record->id }}" action="{{ route('permanent-delete-record', ['table' => $record->getTable(), 'id' => $record->id]) }}" method="post" style="display: inline;">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button onclick="deleteData({{ $record->id }})" type="button" class="dropdown-item">Delete</a>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

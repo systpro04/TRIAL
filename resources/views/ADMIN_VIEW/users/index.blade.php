@@ -57,16 +57,14 @@
                                 @endforeach
                             </td>
                             <td>
-                                {{-- <a href="#" data-toggle="modal" id="user_edit_link" class="btn" data-target="#user_id{{ $user->id }}"><span class="text-warning fas fa-pen"></span></a>
-                                <a href="#" data-toggle="modal" id="user_delete_link" class="btn" data-target="#delete_user_id{{ $user->id }}"><span class="text-danger fas fa-trash-alt"></span></a> --}}
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-danger">Action</button>
                                     <button type="button" class="btn btn-sm btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                                       <span class="visually-hidden">Toggle Dropdown</span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                      <li><a href="#" data-toggle="modal" id="user_edit_link" class="btn" data-target="#user_id{{ $user->id }}"><span class="text-warning fas fa-pen"></span> Edit</a></li>
-                                      <li><a href="#" data-toggle="modal" id="user_delete_link" class="btn" data-target="#delete_user_id{{ $user->id }}"><span class="text-danger fas fa-trash-alt"></span> Delete</a></li>
+                                      <a class="dropdown-item" href="#" data-toggle="modal" id="user_edit_link" class="btn" data-target="#user_id{{ $user->id }}">Edit</a>
+                                      <a class="dropdown-item" href="#" data-toggle="modal" id="user_delete_link" class="btn" data-target="#delete_user_id{{ $user->id }}">Delete</a>
                                     </ul>
                                 </div>
                             </td>

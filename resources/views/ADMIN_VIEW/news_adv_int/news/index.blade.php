@@ -68,14 +68,20 @@
                                             <td>{{ $new->article }}</td>
                                             <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i A', $new->dateTime)->format('M. d, Y h:i A') }}</td>
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target="#edit{{$new->id}}">
-                                                    <button class="btn btn-sm btn-success" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fas fa-pen"></i></button>
-                                                </a>                                                
-                                                <form id="delete-form-{{ $new->id }}" action="{{ route('news.destroy', $new->id) }}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="button" onclick="deleteData({{ $new->id }})" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></button>
-                                                </form>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-danger">Action</button>
+                                                    <button type="button" class="btn btn-sm btn-danger dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                      <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu" role="menu">
+                                                        <a  class="dropdown-item" href="#" data-toggle="modal" data-target="#edit{{$new->id}}">Edit</a>                                                
+                                                        <form id="delete-form-{{ $new->id }}" action="{{ route('news.destroy', $new->id) }}" method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <a type="button" onclick="deleteData({{ $new->id }})" class="dropdown-item">Delete</a>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @include('ADMIN_VIEW.news_adv_int.news.edit')
