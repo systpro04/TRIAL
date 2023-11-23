@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trial and Error</title>
+    <title>Trial or Error</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/users/flames.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
@@ -24,7 +24,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="#" class="brand-link">
                 <img src="{{ asset('images/users/flames.png') }}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: 1 ; color:rgb(255, 230, 0)">
-                <span class="brand-text font-weight-bold">TRIAL AND ERROR</span>
+                <span class="brand-text font-weight-bold">TRIAL or ERROR™</span>
             </a>
             <div class="sidebar">
                 @include('layouts.partials.sidebar')

@@ -49,7 +49,7 @@
                             <i class="fas fa-user-circle" style="color: chartreuse"></i> {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#" onclick="confirmLogout();">Logout</a>
+                            <a class="dropdown-item" href="#" onclick="logout();">Logout</a>
                         
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -62,11 +62,11 @@
     </ul>
 </nav>
 <script>
-    function confirmLogout() {
+    function logout() {
         Swal.fire({
             title: 'Are you sure?',
             text: 'You will be logged out!',
-            icon: 'warning',
+            icon: 'info',
             showCancelButton: true,
             confirmButtonText: 'Yes, logout!',
             cancelButtonText: 'Cancel',
